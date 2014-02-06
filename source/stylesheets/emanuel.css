@@ -3,8 +3,20 @@ body {
     font-size: 15px;
 }
 
-.page-header {
-    border-color: #ccc;
+.container {
+    max-width: 800px;
+}
+
+section p {
+    padding-left: 15px;
+}
+
+.breadcrumb {
+    background-color: #cff;
+    margin-bottom: 15px;
+}
+.breadcrumb>.active {
+    color: #555;
 }
 
 a,
@@ -25,14 +37,28 @@ h2 {
     font-size: 27px;
 }
 
+h3.para-heading {
+    margin-left: 10px;
+}
+
 /* wtf bootstrap? */
-ol {
+#welcome ol,
+#modules ol {
     margin-left: 30px;
 }
 
 #welcome,
-#rules {
+#modules {
     border-bottom: 1px dashed #555;
+}
+
+.keyword {
+    color: #0a0;
+    background-color: #f9f2f4;
+    padding: 2px 4px;
+    font-style: italic;
+    border-radius: 4px;
+    white-space: nowrap;
 }
 
 @media (min-width: 768px) {
@@ -40,7 +66,11 @@ ol {
         border-right: 1px dashed #555;
     }
 
-    #rules {
+    #modules {
         border: none;
+    }
+
+    #rules {
+        padding-left: 30px;
     }
 }

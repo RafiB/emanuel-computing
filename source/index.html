@@ -3,6 +3,12 @@ layout: default
 title: 'home'
 ---
 
+<div id='breadcrumb'>
+    <ol class="breadcrumb">
+        <li class="active">Home</li>
+    </ol>
+</div>
+
 <div id='info' class='col-xs-12 col-sm-6 col-md-5'>
     <div id='welcome'>
         <h2>Welcome to Emanuel Computing!</h2>
@@ -22,21 +28,22 @@ title: 'home'
         </p>
     </div>
 
-    <div id='rules'>
-    <h2>Modules</h2>
-    <ol>
-        <li><a href='/linux_terminal'>The linux terminal</a> (basic commands and what not to do)</li>
-        <li><a href='/c_intro'>Intro to C</a> (program outline, style guide, printing and compiling C, variables, printf args, if/else, while, for)</li>
-        <li><a href='/bash_filters'>Bash &amp; Filters</a></li>
-        <li><a href='/c_more'>More C</a> (what the program outline means, user input from stdin)</li>
-        <li><a href='/bash_scripting'>Bash &amp; scripting</a></li>
-        <li><a href='/c_further'>Further C</a> (pitfalls, structs, memory, finishing with linked lists)</li>
-    </ol>
-
+    <div id='modules'>
+        <h2>Modules</h2>
+        <ol>
+            <li><a href='{{ root_url }}/linux-terminal'>The linux terminal</a></li>
+            <li><a href='{{ root_url }}/c-intro'>Intro to C</a> (program outline, style guide, printing and compiling C, variables, printf args, if/else, while, for)</li>
+            <li><a href='{{ root_url }}/bash-filters'>Bash &amp; Filters</a></li>
+            <li><a href='{{ root_url }}/c-more'>More C</a> (what the program outline means, user input from stdin)</li>
+            <li><a href='{{ root_url }}/bash-scripting'>Bash &amp; scripting</a></li>
+            <li><a href='{{ root_url }}/git'>Git</a></li>
+            <li><a href='{{ root_url }}/c-further'>Further C</a> (pitfalls, structs, memory, linked lists)</li>
+        </ol>
     </div>
 </div>
 
 <div class='col-xs-12 col-sm-6 col-md-7'>
+    <div id='rules'>
         <h2>The Rules</h2>
         <p>
             Muck around you're out. That goes for behaviour, bullying, or running <code>rm -rf *</code><br /><br />
@@ -48,5 +55,6 @@ title: 'home'
             Help another student and get yourself a reward<br /><br />
 
             There are tasks to do. They aren't homework, but you'll be a lot better off if you do the questions, and I'll know if you haven't done them. If you aren't here to improve, why are you here? BUT if you try and don't succeed, you're doing awesomely! Drop me an email (I'll reply between 1000 and 0100) and I'll see what I can do to help.
-        </p> 
+        </p>
+    </div>
  </div>

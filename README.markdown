@@ -12,10 +12,36 @@ going on. If not, drop me an email at rafiblecher@gmail.com
 
 You'll need to follow http://octopress.org/docs/setup/
 
-**Note**: don't run `rake install`, run `rake install[emanuel]`
-
-Remember to
+I installed using RVM. If you do too, remember to
 
     source /home/rafi/.rvm/scripts/rvm
 
-or similar
+or whatever it is that the install process tells you to do.
+
+## Consolidating files
+
+Running `rake install[emanuel]` will load all files associated with the theme
+(HTML, CSS, etc.) into the top-level source directory. You'll be in trouble if
+you don't run this, so... run this.
+
+## Running the server locally
+
+    rake preview
+
+## Adding a new page
+
+We're doing URLs by folder-name/index.html, so that URLs are semi-beautiful
+(/c-intro instead of /c-intro.html). This does mean that if you want to do
+something on the URL /c-intro, you have to create the folder "c-intro" and
+edit "index.html" inside that folder. Luckily, Octopress does this for you!
+Just run
+
+    rake new_page[c-intro]
+
+and then edit source/c-intro/index.html, editing the information at the top to
+be:
+
+    ---
+    layout: default
+    title: "title of the page"
+    ---

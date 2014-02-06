@@ -1,0 +1,46 @@
+body {
+    background-color: #CBF2F0;
+    font-size: 15px;
+}
+
+.page-header {
+    border-color: #ccc;
+}
+
+a,
+a:hover {
+    color: #6f1a3b;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.sub {
+    color: #cc7f90;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 27px;
+}
+
+/* wtf bootstrap? */
+ol {
+    margin-left: 30px;
+}
+
+#welcome,
+#rules {
+    border-bottom: 1px dashed #555;
+}
+
+@media (min-width: 768px) {
+    #info {
+        border-right: 1px dashed #555;
+    }
+
+    #rules {
+        border: none;
+    }
+}

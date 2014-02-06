@@ -1,0 +1,45 @@
+{% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]>
+<html class='no-js iem7'>
+<![endif]-->
+<!--[if lt IE 9]>
+<html class='no-js lte-ie8'>
+<![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+<html class='no-js' lang='en'>
+<!--<![endif]-->
+
+    <head>
+        <meta charset='utf-8'>
+        <title>{% if page.title %}{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %} - {% endif %}{{ site.title }}</title>
+
+        <link href='{{ root_url }}/favicon.png' rel='icon'>
+
+        <link href='{{ root_url }}/stylesheets/bootstrap.min.css' rel='stylesheet'>
+        <link href='{{ root_url }}/stylesheets/emanuel.css' rel='stylesheet'>
+        <link href='{{ root_url }}/stylesheets/sticky_footer.css' rel='stylesheet'>
+
+        <script src='{{ root_url }}/javascripts/modernizr-2.0.js'></script>
+    </head>
+    <body>
+        <div id='main'>
+            <div class='container'>
+                <div class='text-center page-header'>
+                    <h1><a href='{{ root_url }}/'>{{ site.title }}</a></h1>
+                    {% if site.subtitle %}<h2 class='sub'>{{ site.subtitle }}</h1>{% endif %}
+                </div>
+
+                {{ content | expand_urls: root_url }}
+            </div>
+        </div>
+
+        <footer role='contentinfo'>
+            <p>
+                Developed and written by Rafi Blecher, Hannah Beder<br />
+                <span class='credit'>Powered by <a href='http://octopress.org'>Octopress</a></span>
+            </p>
+        </footer>
+    </body>
+</html>

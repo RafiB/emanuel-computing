@@ -12,6 +12,8 @@ going on. If not, drop me an email at rafiblecher@gmail.com
 
 You'll need to follow http://octopress.org/docs/setup/
 
+**Note**: don't run `rake install`, run `rake install[emanuel]`
+
 Remember to
 
     source /home/rafi/.rvm/scripts/rvm

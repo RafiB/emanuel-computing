@@ -8,6 +8,10 @@ I've ripped out a lot of the guts of their blogging site to turn this
 into a simple content serving site. You should be able to follow what's
 going on. If not, drop me an email at rafiblecher@gmail.com
 
+## Setup
+
+You'll need to follow http://octopress.org/docs/setup/
+
 Remember to
 
     source /home/rafi/.rvm/scripts/rvm

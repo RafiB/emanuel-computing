@@ -74,9 +74,26 @@ title: "Linux Terminal"
         files and sub-directories contained in a directory.<br /><br />
 
         Simply entering <code>ls</code> in the terminal will list the files in the
-        current directory. You can provide options (called 
+        current directory. You can provide options (called
         <span class='keyword'>arguments</span>) to <code>ls</code>. For example,
-        <code>ls /</code> will list the contents of the root directory.
+        <code>ls /</code> will list the contents of the root
+        directory.<br /><br />
+
+        Most of these tools also have <span class='keyword'>flags</span>, which are
+        short arguments that slightly modify the way a tool works. Some useful flags
+        for <code>ls</code> are:<br /><br />
+
+        <code>ls -a</code> lists <em>all</em> files, including hidden files and
+        directories (which begin with a <code>.</code>).<br /><br />
+
+        <code>ls -l</code> lists with <span class='keyword'>long listing</span>
+        format.<br /><br />
+
+        You can combine these flags. To list all files in long listing format,
+        you use <code>ls -la</code> or <code>ls -al</code>.<br /><br />
+
+        You can find more flags by reading the manual page for <code>ls</code>
+        (type <code>man ls</code>) into the terminal.
     </p>
 </section>
 
@@ -87,3 +104,5 @@ title: "Linux Terminal"
         <code>.</code> and <code>..</code>.
     </p>
 </section>
+
+<h1>cp (-r), mv (CAREFUL), rm (-r, -f, CAREFUL), mkdir (-p), rmdir (-r, -f, CAREFUL)</h1>

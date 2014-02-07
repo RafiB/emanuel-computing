@@ -12,7 +12,7 @@ title: "Linux Terminal"
 
 <section>
     <h3>Foreword</h3>
-    <p id='foreword'>
+    <div id='foreword'>
         <span class='keyword'>Linux</span> is a computer operating system. Linux
         is a variant of <span class='keyword'>Unix</span>. Indeed, Linux is named
         after the original developer of Linux; Linus Torvalds.<br />
@@ -21,7 +21,7 @@ title: "Linux Terminal"
         about Unix variants. All instructions covered here will work on Mac
         laptops.<br /><br />
 
-        The linux terminal is a hierarchy, or in computer science terms, a
+        Unix systems are organised in a hierarchy, or in computer science terms, a
         <span class='keyword'>tree</span>. The <span class='keyword'>root</span>
         of the tree, or the highest point in the hierarchy, is called the
         <span class='keyword'>root directory</span> and is represented simply by
@@ -42,67 +42,291 @@ title: "Linux Terminal"
         <small>Note: in examples concerning the terminal, <code>$</code> represents
         the <span class='keyword'>prompt</span>, which is the part of the terminal
         that waits for the next instruction.</small>
-    </p>
+    </div>
 </section>
 
 <section>
     <h3><code>pwd</code></h3>
-    <p id='pwd'>
+    <div id='pwd'>
         <code>pwd</code> stands for <code>print working directory</code>. The
         <code>working</code> directory is the directory that you are currently in.
         <br /><br />
         This is a very handy tool to have when you're using files that are spread
         across different folders on your computer.
-    </p>
+    </div>
 </section>
 
 <section>
     <h3><code>cd</code></h3>
-    <p id='cd'>
+    <div id='cd'>
         <code>cd</code> stands for <code>change directory</code>. This command is
         used, as its name might suggest, to move between directories. For
         example, if you are in your home directory (<code>/home/username</code>)
         and you want to change to the root directory (<code>/</code>), you would
         enter the command <code>cd /</code> into the terminal.
-    </p>
+    </div>
 </section>
 
 <section>
     <h3><code>ls</code></h3>
-    <p id='ls'>
+    <div id='ls'>
         <code>ls</code> is the <code>list</code> command. It is used to list the
         files and sub-directories contained in a directory.<br /><br />
 
         Simply entering <code>ls</code> in the terminal will list the files in the
         current directory. You can provide options (called
         <span class='keyword'>arguments</span>) to <code>ls</code>. For example,
-        <code>ls /</code> will list the contents of the root
+        <code>$ ls /</code> will list the contents of the root
         directory.<br /><br />
 
         Most of these tools also have <span class='keyword'>flags</span>, which are
         short arguments that slightly modify the way a tool works. Some useful flags
         for <code>ls</code> are:<br /><br />
 
-        <code>ls -a</code> lists <em>all</em> files, including hidden files and
+        <code>$ ls -a</code>: list <em>all</em> files, including hidden files and
         directories (which begin with a <code>.</code>).<br /><br />
 
-        <code>ls -l</code> lists with <span class='keyword'>long listing</span>
+        <code>$ ls -l</code>: list with <span class='keyword'>long listing</span>
         format.<br /><br />
 
         You can combine these flags. To list all files in long listing format,
-        you use <code>ls -la</code> or <code>ls -al</code>.<br /><br />
+        you use <code>$ ls -la</code> or <code>$ ls -al</code>.<br /><br />
 
         You can find more flags by reading the manual page for <code>ls</code>
         (type <code>man ls</code>) into the terminal.
-    </p>
+    </div>
 </section>
 
 <section>
-    <h3 class='para-heading'>Special Folders</h3>
-    <p id='special-folders'>
-        There are two special folders contained in every folder. These are
-        <code>.</code> and <code>..</code>.
-    </p>
+    <h3><code>cp</code></h3>
+    <div id='cp'>
+        <code>cp</code> is the <code>copy</code> command. <code>cp</code> is
+        used to copy files and directories around the filesystem.<br /><br />
+
+        For example, to create a copy of a file as a backup, you could run
+        <code>cp helloWorld.c helloWorld.c.bkp</code><br /><br />
+
+        You can also copy entire directories, but doing so requires you to
+        <span class='keyword'>recursively</span> copy the folder's contents.
+        This means copying the folder, and any files or folders inside that
+        folder, and any folders inside those folders, ...<br />
+        The command to do that would be <code>$ cp -r existing-folder new-folder</code>
+        which uses the <code>-r</code> flag to mean <code>recursive</code><br /><br />
+
+        You must be very careful with the <code>cp</code> tool, as you can
+        unintentionally overwrite files. It is for this reason that we recommend
+        you always back up important files before venturing into unfamiliar
+        tech territory.
+    </div>
 </section>
 
-<h1>cp (-r), mv (CAREFUL), rm (-r, -f, CAREFUL), mkdir (-p), rmdir (-r, -f, CAREFUL)</h1>
+<section>
+    <h3><code>mv</code></h3>
+    <div id='mv'>
+        Similar to the <code>cp</code> tool is <code>mv</code>, or <code>move</code>.
+        <code>mv</code> is a very powerful tool, but this is not always a good thing.
+        <br /><br />
+
+        You can use <code>mv</code> to rename files or folders, by moving them to
+        a new location. For example:<br />
+        <code>$ mv old-file new-file</code><br /><br />
+
+        However, if there already exists a file or folder named "new-file", it
+        will be replaced by the new file, and you will lose the old file or folder.
+        Always be careful with your <code>mv</code> instructions.<br /><br />
+
+        Think of <code>mv</code> as a "cut and paste" command, where <code>cp</code>
+        is "copy and paste".
+</section>
+
+<section>
+    <h3><code>rm</code></h3>
+    <div id='rm'>
+        A truly terrifying tool, <code>rm</code> is the <code>remove</code> command.
+        It is used to delete files or folders.<br /><br />
+
+        You can use <code>rm</code> to delete one or more files at a time:<br />
+        <code>$ rm myFile</code><br />
+        <code>$ rm myFile1 myFile2 myFile3</code><br /><br />
+
+        You can even delete entire folders in one command, using the <code>-r</code>
+        flag (recursive):<br />
+        <code>$ rm -r myFolder</code><br /><br />
+
+        You can also try to force the deletion of a file (you can't always delete
+        a file or directory that doesn't belong to your user). To do this, you use
+        the <code>-f</code> flag.<br /><br />
+
+        <span class='text-danger'>Warning: the following command deletes as many
+        files on your computer as possible. If you run it on your computer or
+        someone else's computer, you will be kicked out of this course. No second
+        chances.</span><br /><br />
+
+        You can combine the <code>-r</code> and <code>-f</code> flags to
+        <em>forcefullly, recursively delete</em> every file in a directory.<br />
+        Running <code>$ rm -rf /*</code> will attempt to delete every file in
+        the filesystem, including any mounted storage systems (USB sticks,
+        external hard drives, etc.)<br /><br />
+
+        This command is being taught to you only so you know to <em>avoid</em> it.
+    </div>
+</section>
+
+<section>
+    <h3><code>mkdir</code></h3>
+    <div id='mkdir'>
+        The <code>mkdir</code> command stands for <code>make directory</code>.
+        It is used to create a new directory in the filesystem.<br /><br />
+
+        <code>$ mkdir newFolder</code> will create a directory called newFolder
+        inside the current directory. Like other commands, you can specify a
+        location for <code>mkdir</code> to be run, e.g.
+        <code>$ mkdir /home/rafi/newFolder</code>.<br /><br />
+
+        An immensely useful flag for <code>mkdir</code> is <code>-p</code>,
+        which produces no error if a folder already exists:
+        <code>$ mkdir /home/rafi<br />
+            mkdir: cannot create directory ‘/home/rafi’: File exists<br />
+            $ mkdir -p /home/rafi<br />
+        $</code><br /><br />
+
+        <code>-p</code> also creates the parents of a directory if they do
+        not already exist. For example, you could do:<br />
+        <code>$ mkdir -p /home/rafi/newFolder/newChild</code><br />
+        instead of<br />
+        <code>$ mkdir /home/rafi/newFolder &amp;&amp; mkdir /home/rafi/newFolder/newChild</code><br />
+        <span class='small'>Here we see a new tool: <code>&amp;&amp;</code>. This is
+        <span class='keyword'>and</span>, and can chain multiple commands
+        together to run one after the other.</span>
+    </div>
+</section>
+
+<section>
+    <h3><code>rmdir</code></h3>
+    <div id='rmdir'>
+        As might be obvious by now, the <code>rmdir</code> command stands for
+        <code>remove directory</code>. A relatively weak tool, <code>rmdir</code>
+        can only be used to delete completely empty directories. As discussed
+        before, to delete a non-empty directory we must recursively delete it,
+        using <code>rm -r</code>.<br /><br />
+
+        Example usage:<br />
+        <code>$ rmdir aFolder</code>
+    </div>
+</section>
+
+<section>
+    <h3>Special Folders</h3>
+    <div id='special-folders'>
+        There are two special folders contained in every folder. These are
+        <code>.</code> and <code>..</code>.<br /><br />
+
+        <code>.</code> is the current directory. It is very useful when
+        running programs, as you can run <code>./executable</code> instead
+        of, for example, <code>/home/rafi/c-programs/helloWorld</code>.
+        <br /><br />
+
+        <code>..</code> is the parent directory. <code>..</code> comes in
+        handy when you need to quickly reference a directory that is above
+        the working directory:<br />
+        <code>$ cd ..</code> will change up to the parent of the working directory<br />
+        <code>$ ../anotherFolder/executable</code> will run the executable
+        file called <code>executable</code> in the folder called "anotherFolder",
+        contained in the working directory's parent.
+    </div>
+</section>
+
+<section>
+    <h3><code>chmod</code></h3>
+    <div id='chmod'>
+        Every file and folder in linux has its own set of permissions:
+        permissions for the owner of the file, for the group that the
+        file belongs to, and permissions for everyone else.<br /><br />
+
+        There are nine permissions on every file: <b>r</b>ead,
+        <b>w</b>rite (change) and e<b>x</b>ecute (run) for the owner of the file,
+        for the group of the file, and for others who are neither the owner
+        nor in the group.<br /><br />
+
+        For example, a file with modes <code>rwxr-xr--</code> has the following
+        permissions:
+        <table class='table table-bordered text-center'>
+            <tr>
+                <td></td>
+                <td>read</td>
+                <td>write</td>
+                <td>execute</td>
+            </tr>
+            <tr>
+                <td>user</td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+            </tr>
+            <tr>
+                <td>group</td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td></td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+            </tr>
+            <tr>
+                <td>others</td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        These permissions (called <span class='keyword'>modes</span>) are
+        modified with the <code>chmod</code> command (<code>change mode</code>).
+        <br /><br />
+
+        In the example above, running <code>chmod g+w</code> will add
+        <b>w</b>rite permissions for the file's group, while
+        <code>chmod o-r</code> will remove <b>r</b>ead permissions for
+        <b>o</b>thers.<br />
+        This would leave us with a permission set <code>rwxrwx---</code>, or
+        <table class='table table-bordered text-center'>
+            <tr>
+                <td></td>
+                <td>read</td>
+                <td>write</td>
+                <td>execute</td>
+            </tr>
+            <tr>
+                <td>user</td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+            </tr>
+            <tr>
+                <td>group</td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class="glyphicon glyphicon-ok"></span></td>
+            </tr>
+            <tr>
+                <td>others</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section>
+    <h3><code>chown</code></h3>
+    <div id='chown'>
+        To change the owner and group of a file, we use the tool
+        <code>chown</code>.<br /><br />
+
+        For example, to change the ower of a file to rafi and the group of the
+        file to plugdev, we would run:<br />
+        <code>$ chown rafi:plugdev filename</code><br /><br />
+
+        To apply the new owner/group to an entire directory, we use the
+        <code>-R</code> (not <code>-r</code>) flag:<br />
+        <code>$ chown -R rafi:plugdev foldername</code>
+    </div>
+</section>

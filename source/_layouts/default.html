@@ -25,9 +25,37 @@
         <link href='{{ root_url }}/stylesheets/sticky_footer.css' rel='stylesheet'>
 
         <script src='{{ root_url }}/javascripts/modernizr-2.0.js'></script>
+        <script src='{{ root_url }}/javascripts/jquery-2.1.0.min.js'></script>
+
+        <script>
+            /* Reveal top when you scroll 500px down the page */
+            $(document).ready( function () {
+                $(document).scroll(function() {
+                    if ($(this).scrollTop() >= 500 && $(window).width() >= 930) {
+                        $('#top').fadeIn();
+                    } else {
+                        $('#top').fadeOut();
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
         <div id='main'>
+            <a href='#'>
+            <div id='top'>
+                Top
+            </div>
+            </a>
+
+            {% if page.title != 'home' %}
+            <a href='{{ root_url }}/'>
+            <div id='home'>
+                Home
+            </div>
+            </a>
+            {% endif %}
+
             <div class='container'>
                 <div class='text-center page-header'>
                     <h1><a href='{{ root_url }}/'>{{ site.title }}</a></h1>

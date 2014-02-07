@@ -1,6 +1,54 @@
 body {
     background-color: #CBF2F0;
     font-size: 15px;
+
+    min-width: 366px;
+}
+
+#top,
+#home {
+    display: none; /* on mobile */
+
+    position: fixed;
+
+    left: 35px;
+
+    background-color: #eff;
+
+    border-radius: 50px;
+}
+
+#top {
+    top: 20%;
+    padding: 20px 17.5px;
+}
+
+#home {
+    top: 35%;
+    padding: 20px 10px;
+}
+
+#top:before,
+#home:before {
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    display: inline-block;
+    content: '';
+}
+
+#home:before {
+    border-right-color: #eff;
+    left: -19px;
+    top: 22px;
+}
+
+#top:before {
+    border-bottom-color: #eff;
+    top: -19px;
+    left: 21px;
 }
 
 .container {
@@ -59,6 +107,12 @@ h3.para-heading {
     font-style: italic;
     border-radius: 4px;
     white-space: nowrap;
+}
+
+@media (min-width: 930px) {
+    #home {
+        display: block;
+    }
 }
 
 @media (min-width: 768px) {

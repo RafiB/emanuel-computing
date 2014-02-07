@@ -18,12 +18,12 @@ html, body {height: 100%;}
 #main {min-height: 100%;}
 
 .container {overflow:auto;
-    padding-bottom: 70px;}  /* must be same height as the footer */
+    padding-bottom: 76px;}  /* must be same height as the footer */
 
 footer {position: relative;
     text-align: center;
-    margin-top: -70px; /* negative value of footer height */
-    height: 70px;
+    margin-top: -76px; /* negative value of footer height */
+    height: 60px;
     padding-top: 15px;
     clear:both;}
 

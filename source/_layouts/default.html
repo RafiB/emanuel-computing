@@ -54,24 +54,21 @@
     </head>
     <body>
         <div id='main'>
-            <a href='#'>
-            <div id='top'>
-                Top
-            </div>
-            </a>
-
-            {% if page.title != 'home' %}
-            <a href='{{ root_url }}/'>
-            <div id='home'>
-                Home
-            </div>
-            </a>
-            {% endif %}
-
             <div class='container'>
                 <div class='text-center page-header'>
                     <h1><a href='{{ root_url }}/'>{{ site.title }}</a></h1>
                     {% if site.subtitle %}<h2 class='sub'>{{ site.subtitle }}</h1>{% endif %}
+                </div>
+                <div id='nav-btns'>
+                    <a href='#breadcrumb'><div id='top'>
+                        Top
+                    </div></a>
+
+                    {% if page.title != 'home' %}
+                    <a href='{{ root_url }}/'><div id='home'>
+                        Home
+                    </div></a>
+                    {% endif %}
                 </div>
 
                 {{ content | expand_urls: root_url }}

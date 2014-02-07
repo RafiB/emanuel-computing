@@ -1,8 +1,12 @@
 body {
     background-color: #CBF2F0;
     font-size: 15px;
+}
 
-    min-width: 366px;
+#nav-btns {
+    position: absolute;
+    left: -80px;
+    top: 0;
 }
 
 #top,
@@ -10,8 +14,6 @@ body {
     display: none; /* on mobile */
 
     position: fixed;
-
-    left: 35px;
 
     background-color: #eff;
 
@@ -53,6 +55,7 @@ body {
 
 .container {
     max-width: 800px;
+    position: relative;
 }
 
 section div {
@@ -131,5 +134,22 @@ h3.para-heading {
 
     #rules {
         padding-left: 30px;
+    }
+}
+
+@media (max-height: 129px) {
+    #home {
+        display: none !important;
+    }
+}
+
+@media (max-height: 412px) {
+    #top {
+        top: 9px;
+    }
+
+    #home {
+        top: initial;
+        bottom: 0;
     }
 }

@@ -45,3 +45,12 @@ be:
     layout: default
     title: "title of the page"
     ---
+
+## Pushing
+Before you push, run `deconsolidate.sh` in the main repo directory (above
+`source`). This will save all files in source to the emanuel theme.
+If you don't do this, you'll lose your changes when you next run
+`rake install[emanuel]`.
+
+Don't screw this up. Trust me, I have half a mind to put `./deconsolidate.sh`
+in a git pre-push hook.

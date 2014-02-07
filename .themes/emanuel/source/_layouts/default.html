@@ -30,6 +30,18 @@
         <script>
             /* Reveal top when you scroll 500px down the page */
             $(document).ready( function () {
+                var width = $(window).width();
+                $(window).resize(function(){
+                    if($(this).width() != width){
+                        width = $(this).width();
+                        if ($(window).width() < 930) {
+                            $('#top').hide();
+                        } else if ($(this).scrollTop() >= 500) {
+                            $('#top').fadeIn();
+                        }
+                    }
+                });
+
                 $(document).scroll(function() {
                     if ($(this).scrollTop() >= 500 && $(window).width() >= 930) {
                         $('#top').fadeIn();

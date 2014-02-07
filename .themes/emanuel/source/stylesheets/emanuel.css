@@ -72,8 +72,13 @@ a:hover {
     color: #6f1a3b;
 }
 
+.page-header {
+    padding-bottom: 0;
+}
+
 h1 {
     font-size: 48px;
+    margin-bottom: 0;
 }
 
 .sub {

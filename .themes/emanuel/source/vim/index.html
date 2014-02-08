@@ -12,16 +12,250 @@ title: "vim"
 
 <section>
     <h3>The leadup</h3>
-    <p id='the-leadup'>
-        Tools: echo + redirection, cat, more, less, nano, vim or emacs
-    </p>
+    <div id='the-leadup'>
+        Instead of using an editor with a <span class='keyword'>GUI</span>, we
+        like to use a text editor that can run in the terminal. This is
+        particularly important as it means we can use a text editor when we
+        connect to another computer via <span class='keyword'>SSH</span>.
+        <br /><br />
+
+        I particularly like <span class='keyword'>vim</span>, but
+        <span class='keyword'>emacs</span> is also popular. We'll briefly
+        cover some ways of playing with text files in the terminal before
+        covering the basics of vim.<br /><br />
+    </div>
+</section>
+
+<section>
+    <h3>Echo and Redirection</h3>
+    <div id='echo-and-redirection'>
+        We use the <code>echo</code> tool to print things out in the
+        terminal:<br />
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ echo "Hello World"
+Hello World</pre>
+
+        We can also use <span class='keyword'>redirection</span> to direct
+        where information goes in the terminal. By default, information is
+        printed out to <code>stdout</code>, or <em>standard output</em>.
+        To direct where that information goes we use the <code>&gt;</code>
+        operator. Combining <code>echo</code> and redirection, we can
+        direct the output of <code>echo</code> (printed out to stdout) to
+        a file:<br />
+
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ echo "Hello World" &gt; myFile</pre>
+
+        The file <code>myFile</code> now contains the text
+        <code>Hello World</code>. Be careful, as <code>&gt;</code> overwrites
+        file contents. To add to the end of a file instead of replacing the
+        contents of a file, we <span class='keyword'>append</span> to the
+        file: running<br />
+
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ echo "World Hello" &gt;&gt; myFile</pre>
+
+        will result in <code>myFile</code> containing
+
+        <pre class='prettyprint'>Hello World
+World Hello</pre>
+    </div>
+</section>
+
+<section>
+    <h3>cat</h3>
+    <div id='cat'>
+        <code>cat</code> is the <code>concatenate</code> tool. It's used to
+        print out the contents of files to stdout. Continuing from the above
+        example:<br />
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ echo "Hello World" &gt; myFile
+$ echo "World Hello" &gt;&gt; myFile
+$ cat myFile
+Hello World
+World Hello
+$</pre>
+    </div>
+</section>
+
+<section>
+    <h3>less</h3>
+    <div id='less'>
+        <code>less</code> is a tool that we can use to read a file. We can
+        use a few keyboard shortcuts to navigate around the file. A number
+        followed by <code>g</code> will take you to that line number in the
+        file. By itself, <code>g</code> takes you to the first line of the
+        file and <code>G</code> takes you to the last line of the file.<br /><br />
+
+        <code>/</code> allows you to search through a file, which becomes
+        incredibly handy once you learn <span class='keyword'>regular expressions</span>,
+        covered later in this course. <code>?</code> allows you to search
+        through a file, searching backwards from the bottom. <code>n</code>
+        takes you to the next match for your search in the file, and
+        <code>N</code> takes you to the previous match.<br /><br />
+
+        Pressing the space bar acts as Page Down, and <code>b</code> acts as
+        Page Up. There are many more shortcuts, but these are the important
+        ones. Finally, to exit <code>less</code>, use <code>q</code>.
+    </div>
+</section>
+
+<section>
+    <h3>nano</h3>
+    <div id='nano'>
+        <code>nano</code> is the first real text <em>editor</em> that we look
+        at. <code>nano</code> is a baby text editor, with simple shortcuts and
+        extremely basic functionality. Noteable amongst nano's shortcuts are
+        <code>^O</code> (control-O) to save, and <code>^X</code> to exit.<br /><br />
+
+        You will notice that you can't use a mouse to place the typing cursor:
+        all movements have to be made with the keyboard arrows.<br /><br />
+
+        nano is basically useless once you learn vim, so let's move on.
+    </div>
 </section>
 
 <section>
     <h3>vim</h3>
-    <p id='vim'>
+    <div id='vim'>
         vim is a <span class='keyword'>moded editor</span>. There are three
-        equally important modes in vim: insert mode, visual mode, and command
-        mode.
-    </p>
+        equally important modes in vim: command mode, insert mode, and
+        visual mode.<br /><br />
+
+        Command mode is used to send instructions to vim. You can do things
+        like saving files, changing the files you're editing, editing multiple
+        files at once, searching, find+replace-ing, etc.<br /><br />
+
+        Insert mode is used to type into a file. There isn't much that you can
+        do with insert mode besides the different ways to start typing:<br />
+
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>i</td>
+                <td>Start typing where the cursor is</td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td>Start typing one character after where the cursor is</td>
+            </tr>
+            <tr>
+                <td>o</td>
+                <td>Start typing on a new line underneath the cursor</td>
+            </tr>
+            <tr>
+                <td>O</td>
+                <td>Start tying on a new line above the cursor</td>
+            </tr>
+        </table>
+
+        Visual mode is used to highlight text. Again, visual mode isn't too
+        exciting, but it is very useful.
+
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>v</td>
+                <td>Visual: move the cursor in visual mode to
+                    highlight</td>
+            </tr>
+            <tr>
+                <td>shift+v</td>
+                <td>Visual line: highlight line by line</td>
+            </tr>
+            <tr>
+                <td>^v</td>
+                <td>Visual block: highlight a block of characters over
+                    different lines</td>
+            </tr>
+        </table>
+
+        There are a number of other useful shortcuts that are worth knowing.
+        From command mode:
+
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>
+                    :w<br />
+                    write
+                </td>
+                <td>
+                    Save the file
+                </td>
+            </tr>
+
+            <tr>
+                <td>:q<br />
+                    quit
+                </td>
+                <td>
+                    Exit from vim
+                </td>
+            </tr>
+
+            <tr>
+                <td>:wq</td>
+                <td>
+                    Save the file and then exit from vim
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    d<br />
+                    delete
+                </td>
+                <td>
+                    vim's delete functionality is actually very useful:
+                    delete acts as cut. Hence, deleting text puts it in your
+                    clipboard, ready to paste. Highlight text with v and delete
+                    simply by pressing d.<br /><br />
+                    You can also delete the current line using dd, delete from
+                    the current line to the beginnig of the file with dg, and
+                    delete from the current line to the end of the file with dG.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    y<br />
+                    yank
+                </td>
+                <td>
+                    yank is the same as copy. Highlight text with v and then
+                    copy the text with y. yy, yg, yG behave the same way as
+                    dd, dg, dG, but yanking instead of deleting.
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    p<br />
+                    paste
+                </td>
+                <td>
+                    paste from the clipboard: paste whatever you last yanked
+                    with y or cut with d. p pastes ahead of the cursor, P pastes
+                    behind the cursor.
+                </td>
+            </tr>
+        </table>
+
+        You must remember to change between modes. When you're in insert mode,
+        finish typing and then press escape to return to command mode and
+        then save.<br /><br />
+
+        vim can be customised with a file named .vimrc in your home directory.
+        <br /><br />
+
+        We will discuss how to set up the vimrc file during the course, but if
+        you didn't manage to get it working, download
+        <a href='{{ root_url }}/vim/.vimrc'>this file</a> as <code>.vimrc</code>
+        in your home directory.
+    </div>
+</section>
+
+<section>
+    <h3>emacs</h3>
+    <div id='emacs'>
+        ???
+    </div>
 </section>

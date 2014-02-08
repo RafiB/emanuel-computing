@@ -17,6 +17,7 @@
 
         <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
 
+        <!-- TODO serve human icons -->
         <link href='{{ root_url }}/favicon.png' rel='icon'>
 
         <link href='{{ root_url }}/stylesheets/bootstrap.min.css' rel='stylesheet'>
@@ -24,12 +25,18 @@
         <link href='{{ root_url }}/stylesheets/emanuel.css' rel='stylesheet'>
         <link href='{{ root_url }}/stylesheets/sticky_footer.css' rel='stylesheet'>
 
+        <!-- Google's syntax highlighting for code blocks -->
+        <link href='{{ root_url }}/stylesheets/google-code-prettify/prettify.css' type='text/css' rel='stylesheet' />
+        <script type='text/javascript' src='{{ root_url }}/stylesheets/google-code-prettify/prettify.js'></script>
+
         <script src='{{ root_url }}/javascripts/modernizr-2.0.js'></script>
         <script src='{{ root_url }}/javascripts/jquery-2.1.0.min.js'></script>
 
         <script>
             /* Reveal top when you scroll 500px down the page */
             $(document).ready( function () {
+                prettyPrint();
+
                 var width = $(window).width();
                 $(window).resize(function(){
                     if($(this).width() != width){

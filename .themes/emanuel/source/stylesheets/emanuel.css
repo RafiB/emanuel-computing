@@ -80,7 +80,7 @@ a:hover {
 }
 
 h1 {
-    font-size: 48px;
+    font-size: 38px;
     margin-bottom: 0;
 }
 
@@ -90,7 +90,7 @@ h1 {
 }
 
 h2 {
-    font-size: 27px;
+    font-size: 25px;
 }
 
 h3.para-heading {
@@ -117,6 +117,15 @@ h3.para-heading {
     white-space: nowrap;
 }
 
+.table-bordered>thead>tr>th,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td,
+.table-bordered>tfoot>tr>td {
+    border-color: #99f;
+}
+
 @media (min-width: 930px) {
     #home {
         display: block;
@@ -124,6 +133,13 @@ h3.para-heading {
 }
 
 @media (min-width: 768px) {
+    h1 {
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 27px;
+    }
+
     #info {
         border-right: 1px dashed #555;
     }

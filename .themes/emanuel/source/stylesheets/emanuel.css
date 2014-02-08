@@ -1,5 +1,8 @@
 body {
+    background-color: #DEF;
+    /*
     background-color: #CBF2F0;
+    */
     font-size: 15px;
 }
 
@@ -15,7 +18,10 @@ body {
 
     position: fixed;
 
+    /*
     background-color: #eff;
+    */
+    background-color: #CDF;
 
     border-radius: 50px;
 }
@@ -42,13 +48,19 @@ body {
 }
 
 #home:before {
+    border-right-color: #CDF;
+    /*
     border-right-color: #eff;
+    */
     left: -19px;
     top: 22px;
 }
 
 #top:before {
+    border-bottom-color: #CDF;
+    /*
     border-bottom-color: #eff;
+    */
     top: -19px;
     left: 21px;
 }
@@ -63,11 +75,14 @@ section div {
 }
 
 .breadcrumb {
-    background-color: #cff;
+    background-color: #CDF;
     margin-bottom: 15px;
 }
 .breadcrumb>.active {
     color: #555;
+}
+.breadcrumb>li+li:before {
+    color: #55F;
 }
 
 a,
@@ -77,6 +92,7 @@ a:hover {
 
 .page-header {
     padding-bottom: 0;
+    border-bottom-color: #DDF;
 }
 
 h1 {

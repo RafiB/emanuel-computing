@@ -10,6 +10,10 @@ title: "Linux Terminal"
     </ol>
 </div>
 
+<div class='text-center'>
+    <h2>The Linux Terminal</h2>
+</div>
+
 <section>
     <h3>Foreword</h3>
     <div id='foreword'>
@@ -150,8 +154,9 @@ bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64 
         It is used to delete files or folders.<br /><br />
 
         You can use <code>rm</code> to delete one or more files at a time:<br />
-        <code>$ rm myFile</code><br />
-        <code>$ rm myFile1 myFile2 myFile3</code><br /><br />
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ rm myFile
+$ rm myFile1 myFile2 myFile3</pre>
 
         You can even delete entire folders in one command, using the <code>-r</code>
         flag (recursive):<br />
@@ -189,10 +194,11 @@ bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64 
 
         An immensely useful flag for <code>mkdir</code> is <code>-p</code>,
         which produces no error if a folder already exists:
-        <code>$ mkdir /home/rafi<br />
-            mkdir: cannot create directory ‘/home/rafi’: File exists<br />
-            $ mkdir -p /home/rafi<br />
-        $</code><br /><br />
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ mkdir /home/rafi
+mkdir: cannot create directory ‘/home/rafi’: File exists
+$ mkdir -p /home/rafi
+$</pre>
 
         <code>-p</code> also creates the parents of a directory if they do
         not already exist. For example, you could do:<br />

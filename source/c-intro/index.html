@@ -15,15 +15,53 @@ title: "Intro to C"
 </div>
 
 <section>
-    <h3>Program Outline</h3>
+    <h3>The Anatomy of a C Program</h3>
     <div id='program-outline'>
+        When programming in C, every program you write will have the same outline:
 
+        <div class='prettyheader'>
+            Example 1
+        </div>
+        <?prettify lang=c?>
+        <pre class='prettyprint'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    // YOUR CODE GOES HERE
+
+    return EXIT_SUCCESS;
+}</pre><br />
+
+        <div class='alert alert-success'>
+            <b>Note</b>: You can write comments in your program that are ignored when you run it.
+            For one line comments, this is done with a <code>//</code> as above. For multi-line
+            comments, we format the comment<br /><br />
+
+            <code>/* Your multi-line<br />
+            &nbsp;&nbsp;&nbsp;comment goes<br />
+            &nbsp;&nbsp;&nbsp;here */</code>
+            </div>
     </div>
 </section>
 
 <section>
     <h3>Style Guide</h3>
     <div id='style-guide'>
+        <span class='keyword'>Style</span> is paramount in writing a readable, understandable program.
+        Group projects and code collaboration are both big parts of professional programming, so
+        well-formatted code is expected and appreciated.<br /><br />
+
+        We will teach you C in a clean, readable style, and your personal flair will show up with
+        practice. As long as your code remains nicely formatted, deviations from the
+        <span class='keyword'>styleguide</span> are acceptable.<br /><br />
+
+        Structurally speaking, style when programming in C can be the difference between
+        your code working or not working. We will learn more about this in a later module, though
+        you can take a look at the <a href="https://wiki.cse.unsw.edu.au/info/CoreCourses/StyleGuide">
+        UNSW's C Style Guide</a> if you are interested.
+
 
     </div>
 </section>
@@ -31,21 +69,134 @@ title: "Intro to C"
 <section>
     <h3>Your first C program</h3>
     <div id='hello-world'>
-    {% comment %} printing and compiling {% endcomment %}
-    
+        When learning a new programming language, the first thing we do is write a program to display
+        the message "Hello world" on the screen. This will give us an understanding of the basic syntax
+        and structural layout of a program.<br /><br />
+
+        Don't worry if it doesn't make sense yet - this is what we are here to learn.
+
+        <div class='prettyheader'>
+            Example 2
+        </div>
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    printf("Hello world!");
+
+    return EXIT_SUCCESS;
+}</pre>
+
+    <h1>Raf explains how to compile here</h1>
+
     </div>
 </section>
 
 <section>
     <h3>Variables</h3>
     <div id='variables'>
+        When programming, we use <span class='keyword'>variables</span> to store information
+        which we use in our program. They are called variables as their values can be changed.
+        In C (unlike some other languages) the <span class='keyword'>type</span> of a variable
+        cannot be changed. We must choose the correct type of variable to represent the data
+        we want to store in it.<br /><br />
 
+        Here are some basic types, commonly used in C programs. There are other types, but
+        we tend to prefer the following to their alternatives.<br /><br />
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>
+                    <code>int</code>
+                </td>
+                <td>
+                    Integer
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>char</code>
+                </td>
+                <td>
+                    Character
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>double</code>
+                </td>
+                <td>
+                    Double-precision floating point number
+                </td>
+            </tr>
+        </table>
     </div>
 </section>
 
 <section>
     <h3>Placeholders</h3>
     <div id='placeholders'>
+        We can print out the value of a variable with <code>printf</code> like we used in
+        the "Hello world" example. To do this, we must <span class='keyword'>format</span>
+        a <span class='keyword'>string</span>. This means we must reserve a place in the
+        string for the variables. This reservation is called a
+        <span class='keyword'>placeholder</span>.<br /><br />
+
+        Every type of variable has its own placeholder:<br /><br />
+
+        <table class='table table-bordered table-striped'>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>Placeholder</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <code>int</code>
+                    </td>
+                    <td>
+                        <code>%d</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>char</code>
+                    </td>
+                    <td>
+                        <code>%c</code>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <code>double</code>
+                    </td>
+                    <td>
+                        <code>%lf</code>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class='prettyheader'>
+            Example 3
+        </div>
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int myNumber = 5;
+    printf("My favourite number is %d\n", myNumber);
+
+    return EXIT_SUCCESS;
+}</pre>
+
 
     </div>
 </section>
@@ -63,7 +214,7 @@ title: "Intro to C"
 
     <h4><code>while</code></h4>
     <div id='while'>
-    
+
     </div>
 
     <h4><code>for</code></h4>

@@ -70,7 +70,7 @@ body {
     position: relative;
 }
 
-section div {
+section > div:first-of-type {
     padding-left: 15px;
 }
 
@@ -140,6 +140,14 @@ h3.para-heading {
 .table-bordered>tbody>tr>td,
 .table-bordered>tfoot>tr>td {
     border-color: #99f;
+}
+
+#regex-joke {
+    border-radius: 20px;
+    border: 1px dashed #aaf;
+    padding: 10px;
+    margin-left: 10px;
+    max-width: 200px;
 }
 
 @media (min-width: 930px) {

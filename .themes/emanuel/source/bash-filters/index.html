@@ -1,0 +1,434 @@
+---
+layout: default
+title: "Bash Filters"
+---
+
+<div id='breadcrumb'>
+    <ol class="breadcrumb">
+        <li><a href='{{ root_url }}/'>Home</a></li>
+        <li class="active">Bash Filters</li>
+    </ol>
+</div>
+
+<div class='text-center'>
+    <h2>Bash Filters</h2>
+</div>
+
+<section>
+    <h3>Foreword</h3>
+    <div id='foreword'>
+    </div>
+</section>
+
+<section>
+    <h3>What is a filter?</h3>
+    <div id='what-is-a-filter'>
+        A filter takes in information and trasforms it in some way to give
+        helpful output. Input is usually taken from stdin and printed to stdout,
+        but we can use file redirection or pipes (<code>|</code>) to change
+        where input comes from and where output goes.<br /><br />
+
+        To learn how to use a filter (or to find its options), read the man
+        pages or <em>google it!</em><br /><br />
+
+        Much of this page is similar to
+        <a href='http://www.cse.unsw.edu.au/~cs2041/13s2/'>Andrew Taylor's
+        COMP2041 course content</a>, as I thought the way in which Andrew
+        taught the filters was excellent.
+    </div>
+</section>
+
+<section>
+    <h3><code>cat</code></h3>
+    <div id='cat'>
+        We met cat briefly in the vim module. For a boring filter, it has some
+        great tools:
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>
+                    -n<br />
+                    --number
+                </td>
+                <td>
+                    Displays line numbers next to each printed line
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    -s<br />
+                    --squeeze-blank
+                </td>
+                <td>
+                    Squeeze blank lines: consecutive blank lines are squeezed
+                    into just one.
+                </td>
+            </tr>
+        </table>
+        For more information, google it, or <code>$ man cat</code> or
+        <code>$ info coreutils 'cat invocation'</code>
+    </div>
+</section>
+
+<section>
+    <h3><code>wc</code></h3>
+    <div id='wc'>
+        <code>wc</code>, or <code>word count</code>, is used to count the
+        number of characters (letters), words, and lines.<br /><br />
+
+        By default, <code>wc</code> will give you all three counts:
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ wc index.html
+71  349 3115 index.html</pre>
+
+        This tells us that the file index.html has 71 lines, 349 words, and
+        3115 characters. To get only one of those values, we do this:
+        <div class='table-responsive'>
+            <table class='table table-bordered table-striped'>
+                <tr>
+                    <td>Command</td>
+                    <td>Output</td>
+                </tr>
+                <tr>
+                    <td>
+                        <?prettify lang=bash?>
+                        <pre class='prettyprint'>$ wc -c index.html
+$ wc --chars index.html</pre>
+                    </td>
+                    <td>
+                        3115 index.html
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <?prettify lang=bash?>
+                        <pre class='prettyprint'>$ wc -w index.html
+$ wc --words index.html</pre>
+                    </td>
+                    <td>
+                        349 index.html
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <?prettify lang=bash?>
+                        <pre class='prettyprint'>$ wc -l index.html
+$ wc --lines index.html</pre>
+                    </td>
+                    <td>
+                        71 index.html
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3><code>tr</code></h3>
+    <div id='tr'>
+        <code>tr</code> is short for <code>transliterate</code>. <code>tr</code>
+        is used to map a set of characters to another set of characters,
+        according to the following pattern:<br /><br />
+
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ tr 'source' 'dest'</pre>
+
+        tr acts on stdin, and works like this:
+
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ tr 'abc' 'xyz' &lt; myText</pre>
+
+        If myText contains "a cat cannot bat", tr would trasform the text
+        to "x zxt zxnnot yxt".<br /><br />
+
+        tr also has some shorthands so that you don't have to type common
+        patterns unnecessarily. For example, 'a-z' is automatically expanded
+        to 'abcdefghijklmnopqrstuvwxyz'.<br /><br />
+
+        tr can also be used to strip characters out of a string; the
+        <code>-d</code> option will delete any character provided. For example:
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ tr -d 'eht'
+this is a test
+is is a s</pre>
+    </div>
+</section>
+
+<section>
+    <h3><code>heads or tails?</code></h3>
+    <div id='head-or-tail'>
+        Often in computer science we call the front of something the
+        <span class='keyword'>head</span> and we call the end the
+        <span class='keyword'>tail</span>. Often we want to peek at a file
+        but we don't care about the entire file; we just want to see the first
+        few lines to see what the file contains, or the format that information
+        is stored in. There are two incredibly useful tools to do this: head
+        and tail. As their names suggest, head is used to view the beginning of
+        a file, while tail is used to view the end of a file.<br /><br />
+
+        By default, only 10 lines are shown. This number can be adjusted using
+        <code>head -number</code>, for example:
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ tail -30 myFile</pre>
+
+        A useful pattern to have in your arsenal is combining head and tail to
+        grab a certain section from a file. <code>head -30 | tail -10</code>
+        will print out lines 21-30.
+    </div>
+</section>
+
+<section>
+    <h3><code>grep</code></h3>
+    <div id='grep'>
+        <code>grep</code> is an acronym for Globally search with Regular
+        Expressions and Print. grep is used to search for lines in a file that
+        match the provided pattern. The pattern is interpreted as a
+        <span class='keyword'>regular expression</span>, which is covered in the
+        next paragraph. grep takes a number of useful arguments:
+
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>
+                    -i<br />
+                    ignore
+                </td>
+                <td>
+                    Ignore differences in upper-/lower-case for matching
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    -v<br />
+                    invert
+                </td>
+                <td>
+                    Display lines that <em>don't</em> match the pattern. This
+                    is sometimes easier than finding a pattern for what you
+                    actually want to match.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    -r<br />
+                    recursive
+                </td>
+                <td>
+                    Searches through all subdirectories as well as the current
+                    directory.
+                </td>
+            </tr>
+        </table>
+
+        grep is only one of a group of pattern-matching filters. One very useful
+        filter to know is <code>egrep</code> or extended grep, which implements
+        regexp fully (whereas grep does not implement <code>+</code>, <code>?</code>,
+        <code>|</code> or <code>()</code>).
+    </div>
+</section>
+
+<section>
+    <h3>Regular Expressions</h3>
+    <div id='regular expressions'>
+        <div id='regex-joke' class='pull-right'>
+            You have a problem. You think "oh I know, I'll solve this with
+            regular expressions!" You now have two problems.
+        </div>
+        Regular expressions are patterns used to match strings. There are a
+        number of <em>special characters</em> which, used correctly, can make
+        your regular expressions very powerful.<br /><br />
+        Some special characters are <code>*</code>, <code>.</code> and
+        <code>$</code>. To match the actual character instead of using their
+        special meaning, you must <span class='keyword'>escape</span> them:
+        <code>\*</code> matches the <code>*</code> character.<br /><br />
+
+        Repeated patterns are denoted by <code>*</code>: <code>a*</code>
+        means "0 or more 'a's". Parentheses (round brackets) denote groups:
+        <code>(word)*</code> represents "0 or more repetitions of 'word'".
+        <br /><br />
+
+        Multiple patterns to match are separated by <code>|</code>;
+        <code>ace|one|two</code> match any one of the strings <code>ace</code>,
+        <code>one</code>, or <code>two</code>.<br /><br />
+
+        <div class='alert alert-success'>
+            It is technically possible to match any pattern with just a
+            combination of <code>()*|</code>, but regular expressions
+            have many more features that help to simplify your pattern.
+        </div>
+
+        <code>.</code> matches any character, only once.<br /><br />
+
+        We can use square brackets to denote sets: <code>[aeiou]</code>
+        matches any vowel, only once. Just like <code>tr</code>, there exist
+        a number of shorthands for ranges of characters in regex. Some examples
+        are <code>[a-f]</code> (a, b, c, d, e, f), <code>[a-z]</code>,
+        <code>[0-9]</code>, <code>[a-zA-Z0-9]</code>. To invert the match of a
+        set, we use <code>[^.....]</code>. For example, <code>[^aeiou]</code>
+        matches any non-vowels. It is important to note that, with the
+        exceptions of <code>[]\-^</code>, characters are stripped of their
+        special meanings when inside square brackets.<br /><br />
+
+        regex also allows us to specify that a pattern must be at the beginning
+        or end of a line. <code>^</code> denotes the start of a line, and
+        <code>$</code> denotes the end of a line. Note that <code>^</code>
+        has different meanings when inside or outside <code>[]</code>.
+        <code>^[the]</code> matches <code>t</code>, <code>h</code>, or
+        <code>e</code> at the beginning of a line, but <code>[^the]</code>
+        matches any single character that isn't <code>t</code>, <code>h</code>,
+        or <code>e</code>. <code>a(b)*$</code> matches a followed by 0 or more
+        'b's at the end of a line.<br /><br />
+
+        We have already seen that <code>*</code> matches 0 or more repetitions,
+        but sometimes we want something more specific. <code>+</code> matches 1
+        or more repetitions, and <code>?</code> matches 0 or 1 repetitions. If
+        a regular expression matches a line more than once, the first match in
+        the line is chosen.
+    </div>
+</section>
+
+<section>
+    <h3><code>cut</code></h3>
+
+    <div id='cut'>
+        <code>cut</code> is used to cut out certain parts of the input. With
+        columnated input, cut can be used to extract certain fields. Otherwise,
+        cut can extract the characters in certain positions (for example,
+        characters 2-5).<br /><br />
+
+        The <code>-d</code> flag is used to specify the
+        <span class='keyword'>column deliminator</span>.<br />
+        The <code>-f</code> flag is used to specify which fields to extract.
+        <code>-f</code> uses tabs as the column deliminator unless
+        otherwise specified by <code>-d</code>.<br />
+        The <code>-c</code> flag specifies the characters to extract.
+        Characters are expressed either as a range (<code>2-5</code>) or
+        comma-separated (<code>1, 3, 5</code>).
+    </div>
+</section>
+
+<section>
+    <h3><code>paste</code></h3>
+
+    <div id='paste'>
+        <code>paste</code> is the opposite of cut: input files are displayed
+        next to each other. The first line of output is made up of the first
+        lines of each input file, the second line is made up of the second
+        lines of each file, etc. Thus if we dissect a file with cut, we can
+        put it back together with paste.
+    </div>
+</section>
+
+<section>
+    <h3><code>sort</code></h3>
+
+    <div id='sort'>
+        <code>sort</code> orders input in a particular way. The default
+        behaviour of the filter is to sort
+        <span class='keyword'>lexicographically</span>, but you can also sort
+        by number value.<br /><br />
+
+        sort takes a number of useful flags.
+
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>
+                    <code>-r</code><br />
+                    <code>--reverse</code>
+                </td>
+                <td>
+                    Sort in reverse order
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>-n</code><br />
+                    <code>--numeric-sort</code>
+                </td>
+                <td>
+                    Sort by number value rather than lexicographically
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>-d</code><br />
+                    <code>--dictionary-order</code>
+                </td>
+                <td>
+                    Sort in dictionary order; ignore non-letters and non-digits
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>-t</code><br />
+                    <code>--field-separator</code>
+                </td>
+                <td>
+                    Specify a column deliminator, <code>-t'|'</code> marks | as
+                    the deliminator. The single quotes are not strictly necessary,
+                    but as we now know, single quotes will prevent characters from
+                    being misinterpreted by the shell.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>-k</code>
+                </td>
+                <td>
+                    Specifies the column to sort on: <code>-k3</code> sorts on
+                    the third column.
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section>
+    <h3><code>uniq</code></h3>
+
+    <div id='uniq'>
+        <code>uniq</code> squashes repeated lines into a single line. As this
+        is a rare situation, uniq is usually combined with sort.<br /><br />
+
+        <code>uniq -c</code> prints the number of times that a line is
+        repeated, after squashing.<br /><br />
+
+        <code>uniq -d</code> prints only duplicated lines (once each)<br /><br />
+
+        The opposite of <code>-d</code> is <code>-u</code>, which prints unique
+        lines only.
+    </div>
+</section>
+
+<section>
+    <h3><code>sed</code></h3>
+
+    <div id='sed'>
+        <code>sed</code> is the <code>stream editor</code>. A useful command
+        is s<br /><br />
+        <code>$ sed 's/int/char/'</code> replaces the first instance of "int"
+        with "char". <code>$ sed 's/int/char/g'</code> replaces all instances
+        of "int" with "char".
+    </div>
+</section>
+
+<section>
+    <h3>pipelines</h3>
+
+    <div id='pipelines'>
+        The pipe (<code>|</code>) is used to redirect information. In the
+        command <code>cat myFile | tr 'abc' 'def'</code>, the contents of
+        myFile are redirected to the input of the tr command. Thus, the tr
+        command is executed on the contents of myFile, and then printed to
+        stdout.<br /><br />
+
+        Pipelines can become very complicated, but very powerful. An example
+        taken straight from COMP2041 is
+        <code>cut -d'|' -f2 enrolments | sort | uniq | wc -l</code> which,
+        in that particular example, is being used to count the number of
+        "distinct individuals" enrolled in different courses. The second
+        column (delimited by a pipe) is extracted, then sorted, then
+        repetitions are squashed, and the number of lines (the number of
+        students) is calculated.
+    </div>
+</section>

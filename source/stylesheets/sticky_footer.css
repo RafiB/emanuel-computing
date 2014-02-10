@@ -48,7 +48,7 @@ You also need to include this conditional style in the <head> of your HTML file 
 
 */
 
-@media (max-width: 352px) {
+@media (max-width: 365px) {
     footer {
         margin-top: -95px;
         height: 80px;

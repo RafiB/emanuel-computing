@@ -54,3 +54,27 @@ If you don't do this, you'll lose your changes when you next run
 
 Don't screw this up. Trust me, I have half a mind to put `./deconsolidate.sh`
 in a git pre-push hook.
+
+Basically, you want to follow one of two patterns:
+
+```
+git add -p
+git commit -m "blah"
+./deconsolidate.sh
+git add -A
+git commit --amend
+git push
+```
+
+or
+
+```
+git add -p
+./deconsolidate.sh
+git add -A
+git commit -m "blah"
+git push
+```
+
+Remember to check with `git status` before you `add -A`, because that may add
+files that you don't intend to include.

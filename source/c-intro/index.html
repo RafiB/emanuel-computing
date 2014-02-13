@@ -76,7 +76,7 @@ int main (int argc, char* argv[]) {
         Don't worry if it doesn't make sense yet - this is what we are here to learn.
 
         <div class='prettyheader'>
-            Example 2
+            Example 2: helloWorld.c
         </div>
         <?prettify lang=c?>
         <pre class='prettyprint linenums'>
@@ -90,8 +90,58 @@ int main (int argc, char* argv[]) {
     return EXIT_SUCCESS;
 }</pre>
 
-    <h1>Raf explains how to compile here</h1>
+        A lot of this looks strange. Don't worry about it for now - all you
+        have to notice is this:<br /> When we print something out to the
+        screen, we use <code>printf</code>, a
+        <span class='keyword'>function</span> which takes a string and prints
+        it out to <code>stdout</code>.<br /><br />
 
+        At the moment, our program is in a language that we can easily
+        understand. However, the C file alone is not something that the
+        computer can understand. To convert a file to
+        <span class='keyword'>machine language</span>, the C file must go
+        through a process called <span class='keyword'>compilation</span>.
+        <br /><br />
+
+        The tool we use for compilation is called
+        <span class='keyword'>GCC</span>. We like to have lots of control over
+        the compilation process, so we do the compilation ourselves from the
+        terminal. First, <code>cd</code> to the directory where you've saved
+        the file. In this example, let's say that the C file with our C code in
+        it is called <code>helloWorld.c</code>. To
+        <span class='keyword'>compile</span> our code, we run:
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ gcc -Wall -Werror helloWorld.c -o hello</pre>
+
+        Let's break that command down.<br /><br />
+        
+        We can see that we're asking GCC to do..
+        something. We're passing two flags: <code>-Wall</code> and
+        <code>-Werror</code>. Usually when we compile we get some warnings
+        about our code, but our program <em>should</em> still run without any
+        problems. However, the warnings indicate that there's something not
+        quite right about what we're telling the computer to do. Hence, we want
+        to avoid warnings. <code>-Wall</code> tells gcc to show all warnings
+        that are found. <code>-Werror</code> tells gcc to treat all warnings as
+        errors, so that our code won't successfully compile if there are any
+        warnings.<br /><br />
+
+        After those two flags, we then need to tell the compiler which file we
+        want to compile (<code>helloWorld.c</code>), and finally, the file that
+        we want to output the <span class='keyword'>executable</span> code to
+        (<code>hello</code>). Note that the output file must come directly
+        after <code>-o</code>. If you try to do something like
+
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ gcc -Wall -Werror hello -o helloWorld.c</pre>
+
+        instead, your helloWorld.c file will be overwritten and you'll lose all
+        of the work that you've done. However, something like
+
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ gcc -o hello -Werror helloWorld.c -Wall</pre>
+
+        is fine.
     </div>
 </section>
 

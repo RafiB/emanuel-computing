@@ -57,9 +57,9 @@
                     }
                 });
 
-                $('.collapsable').next('div').hide();
-                $('.collapsable').before('<span class="glyphicon glyphicon-chevron-up collapsable-icon"></span>');
-                $('.collapsable').click( function () {
+                $('.expandable').next('div').hide();
+                $('.expandable').before('<span class="glyphicon glyphicon-chevron-up expandable-icon"></span>');
+                $('.expandable').click( function () {
                     if ($(this).get(0).tagName == 'H3' || $(this).get(0).tagName == 'H4') {
                         $(this).prevAll('span').toggleClass('glyphicon-chevron-up').toggleClass('glyphicon-chevron-down');
                         $(this).nextAll('div').toggle();

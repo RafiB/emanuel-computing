@@ -95,16 +95,16 @@ a:hover {
     border-bottom-color: #DDF;
 }
 
-h3.collapsable,
-h4.collapsable {
+h3.expandable,
+h4.expandable {
     display: inline-block;
 }
 
-.collapsable {
+.expandable {
     cursor: pointer;
 }
 
-.collapsable-icon:before {
+.expandable-icon:before {
     margin-right: 10px;
 }
 

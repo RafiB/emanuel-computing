@@ -15,13 +15,10 @@ title: "Intro to C"
 </div>
 
 <section>
-    <h3>The Anatomy of a C Program</h3>
+    <h3 class='expandable'>The Anatomy of a C Program</h3>
     <div id='program-outline'>
         When programming in C, every program you write will have the same outline:
 
-        <div class='prettyheader'>
-            Example 1
-        </div>
         <?prettify lang=c?>
         <pre class='prettyprint'>
 #include &lt;stdio.h&gt;
@@ -42,12 +39,12 @@ int main (int argc, char* argv[]) {
             <code>/* Your multi-line<br />
             &nbsp;&nbsp;&nbsp;comment goes<br />
             &nbsp;&nbsp;&nbsp;here */</code>
-            </div>
+        </div>
     </div>
 </section>
 
 <section>
-    <h3>Style Guide</h3>
+    <h3 class='expandable'>Style Guide</h3>
     <div id='style-guide'>
         <span class='keyword'>Style</span> is paramount in writing a readable, understandable program.
         Group projects and code collaboration are both big parts of professional programming, so
@@ -67,17 +64,12 @@ int main (int argc, char* argv[]) {
 </section>
 
 <section>
-    <h3>Your first C program</h3>
+    <h3 class='expandable'>Your first C program</h3>
     <div id='hello-world'>
         When learning a new programming language, the first thing we do is write a program to display
         the message "Hello world" on the screen. This will give us an understanding of the basic syntax
-        and structural layout of a program.<br /><br />
+        and structural layout of a program.<br />
 
-        Don't worry if it doesn't make sense yet - this is what we are here to learn.
-
-        <div class='prettyheader'>
-            Example 2: helloWorld.c
-        </div>
         <?prettify lang=c?>
         <pre class='prettyprint linenums'>
 #include &lt;stdio.h&gt;
@@ -90,8 +82,8 @@ int main (int argc, char* argv[]) {
     return EXIT_SUCCESS;
 }</pre>
 
-        A lot of this looks strange. Don't worry about it for now - all you
-        have to notice is this:<br /> When we print something out to the
+        Don't worry if it doesn't make sense yet - this is what we are here to learn.
+        All you have to notice is this:<br /> When we print something out to the
         screen, we use <code>printf</code>, a
         <span class='keyword'>function</span> which takes a string and prints
         it out to <code>stdout</code>.<br /><br />
@@ -113,40 +105,42 @@ int main (int argc, char* argv[]) {
         <?prettify lang=bash?>
         <pre class='prettyprint'>$ gcc -Wall -Werror helloWorld.c -o hello</pre>
 
-        Let's break that command down.<br /><br />
-        
-        We can see that we're asking GCC to do..
-        something. We're passing two flags: <code>-Wall</code> and
-        <code>-Werror</code>. Usually when we compile we get some warnings
-        about our code, but our program <em>should</em> still run without any
-        problems. However, the warnings indicate that there's something not
-        quite right about what we're telling the computer to do. Hence, we want
-        to avoid warnings. <code>-Wall</code> tells gcc to show all warnings
-        that are found. <code>-Werror</code> tells gcc to treat all warnings as
-        errors, so that our code won't successfully compile if there are any
-        warnings.<br /><br />
+        Let's break that command into its components.<br /><br />
 
-        After those two flags, we then need to tell the compiler which file we
-        want to compile (<code>helloWorld.c</code>), and finally, the file that
-        we want to output the <span class='keyword'>executable</span> code to
-        (<code>hello</code>). Note that the output file must come directly
-        after <code>-o</code>. If you try to do something like
+        When compiling code there are two issues which we can be faced with:
+        warnings and errors. Warnings tell us that something is not quite right
+        with the code. GCC will compile the code despite warnings. Errors are
+        bigger problems. They occur when GCC can't understand your code.<br /><br />
+
+        The two flags being used here are <code>-Wall</code> and
+        <code>-Werror</code>. The -Wall flag enables GCC's common warning flags.
+        The -Werror flag treats all warnings as errors. This means that we have
+        a lot more information about our code when debugging.<br /><br />
+
+        After these two flags, we then need to tell the compiler which file we
+        want to compile. In this case it is <code>helloWorld.c</code>.<br /><br />
+
+        The <code>-o</code> flag tells GCC to output, and following this we
+        specify the name of the file that we want to output the
+        <span class='keyword'>executable</span> code to. Here we call it
+        <code>hello</code>. While the -Wall and -Werror flags can be split up,
+        the output file name must come directly after <code>-o</code>. For
+        example, something like
 
         <?prettify lang=bash?>
         <pre class='prettyprint'>$ gcc -Wall -Werror hello -o helloWorld.c</pre>
 
-        instead, your helloWorld.c file will be overwritten and you'll lose all
-        of the work that you've done. However, something like
+        will overwrite your helloWorld.c file with the output. However,
 
         <?prettify lang=bash?>
         <pre class='prettyprint'>$ gcc -o hello -Werror helloWorld.c -Wall</pre>
 
-        is fine.
+        will work as we want.
     </div>
 </section>
 
 <section>
-    <h3>Variables</h3>
+    <h3 class='expandable'>Variables</h3>
     <div id='variables'>
         When programming, we use <span class='keyword'>variables</span> to store information
         which we use in our program. They are called variables as their values can be changed.
@@ -178,7 +172,7 @@ int main (int argc, char* argv[]) {
                     <code>double</code>
                 </td>
                 <td>
-                    Double-precision floating point number
+                    Double-precision floating point number (decimal)
                 </td>
             </tr>
         </table>
@@ -186,7 +180,7 @@ int main (int argc, char* argv[]) {
 </section>
 
 <section>
-    <h3>Placeholders</h3>
+    <h3 class='expandable'>Placeholders</h3>
     <div id='placeholders'>
         We can print out the value of a variable with <code>printf</code> like we used in
         the "Hello world" example. To do this, we must <span class='keyword'>format</span>
@@ -231,9 +225,6 @@ int main (int argc, char* argv[]) {
             </tbody>
         </table>
 
-        <div class='prettyheader'>
-            Example 3
-        </div>
         <?prettify lang=c?>
         <pre class='prettyprint linenums'>
 #include &lt;stdio.h&gt;
@@ -252,20 +243,126 @@ int main (int argc, char* argv[]) {
 </section>
 
 <section>
-    <h3>Control Structures</h3>
+    <h3 class='expandable'>Control Structures</h3>
     <div id='control-structures'>
+        C runs code line by line from the top of the file. Think about it as a human
+        following a recipe - steps are followed in order. Control structures allow us
+        to repeat, skip, or execute steps when certain conditions are met.
 
+        <h4><code>if</code></h4>
+        <div id='if-else'>
+            <div id='if-joke' class='joke pull-right'>
+                A programmer's wife asks him to go out and get a loaf of bread.
+                "Oh, and if they have eggs," she says, "get a dozen!". He returns
+                with twelve loaves of bread.
+            </div>
+            <code>if</code> allows us to execute code <em>if</em> certain conditions
+            are met. The <span class='keyword'>if statement</span> comprises of the word
+            if, followed by conditions in <span class='keyword'>parentheses</span>.
+
+            <?prettify lang=c?>
+            <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int myNumber = 5;
+
+    if (myNumber == 5) {
+        printf("My favourite number is five!");
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+            <h1>Put question in here</h1>
+
+            The complement to <code>if</code> is <code>else</code>. This creates a
+            simple either-or situation: if certain conditions are met, do this, otherwise
+            do that.
+
+            <?prettify lang=c?>
+            <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int myNumber = 4;
+
+    if (myNumber == 5) {
+        printf("My favourite number is five!");
+    } else {
+        printf("%d is not my favourite number.", myNumber);
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+
+            <code>else if</code> is a combination of <code>if</code> and <code>else</code>.
+            Like <code>else</code>, <code>else if</code> allows code to be executed if the
+            initial if statement was not run. Unlike <code>else</code>, <code>else if</code>
+            allows us to specify a different condition.
+
+            <?prettify lang=c?>
+            <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int myNumber = 4;
+
+    if (myNumber == 5) {
+        printf("My favourite number is five!");
+    } else if (myNumber &lt; 5) {
+        printf("%d is lower than my favourite number.", myNumber);
+    } else {
+        printf("%d is higher than my favourite number.", myNumber);
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+            <div class='alert alert-success'>
+                <b>Note</b>: In this example, we could have replaced the else statement
+                with<br /><br />
+
+                <code>else if (myNumber &gt; 5)</code><br /><br />
+
+                though this is not strictly necessary.
+            </div>
+        </div>
+
+        <h4><code>while</code></h4>
+        <div id='while'>
+            <div id='while-joke' class='joke pull-right'>
+                A programmer's husband asked her to go and get a loaf of bread.
+                "Oh, and while you're out there," he said, "get some eggs too!"
+                She never came home.
+            </div>
+            <code>while</code> allows us to execute code <em>while</em> certain conditions are
+            met. This creates a loop. An example of a while loop is:
+
+            <?prettify lang=c?>
+            <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int i = 1;
+
+    while (i &lt;= 10) {
+        printf("%d", i);
+        i++;
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+            This is more concise than ten lines of print statements. We use loops to help us
+            minimise repeated code - the good programmer is the lazy programmer!
+        </div>
+
+        <h4><code>for</code></h4>
     </div>
-
-    <h4><code>if</code></h4>
-    <div id='if-else'>
-
-    </div>
-
-    <h4><code>while</code></h4>
-    <div id='while'>
-
-    </div>
-
-    <h4><code>for</code></h4>
 </section>

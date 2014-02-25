@@ -95,6 +95,19 @@ a:hover {
     border-bottom-color: #DDF;
 }
 
+h3.collapsable,
+h4.collapsable {
+    display: inline-block;
+}
+
+.collapsable {
+    cursor: pointer;
+}
+
+.collapsable-icon:before {
+    margin-right: 10px;
+}
+
 h1 {
     font-size: 38px;
     margin-bottom: 0;
@@ -154,7 +167,7 @@ h3.para-heading {
     border-color: #99f;
 }
 
-#regex-joke {
+.joke {
     border-radius: 20px;
     border: 1px dashed #aaf;
     padding: 10px;

@@ -1,16 +1,7 @@
 {% capture root_url %}{{ site.root | strip_slash }}{% endcapture %}
 
 <!DOCTYPE html>
-<!--[if IEMobile 7 ]>
-<html class='no-js iem7'>
-<![endif]-->
-<!--[if lt IE 9]>
-<html class='no-js lte-ie8'>
-<![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
-<html class='no-js' lang='en'>
-<!--<![endif]-->
-
+<html>
     <head>
         <meta charset='utf-8'>
         <title>{% if page.title %}{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %} - {% endif %}{{ site.title }}</title>
@@ -58,12 +49,15 @@
                 });
 
                 $('.expandable').next('div').hide();
-                $('.expandable').before('<span class="glyphicon glyphicon-chevron-up expandable-icon"></span>');
+                $('.expandable').before('<span class="glyphicon glyphicon-chevron-down expandable-icon"></span>');
                 $('.expandable').click( function () {
                     if ($(this).get(0).tagName == 'H3' || $(this).get(0).tagName == 'H4') {
                         $(this).prevAll('span').toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
-                        $(this).nextAll('div').toggle();
+                        $(this).nextAll('div').toggle(200);
                     }
+                });
+                $('.expandable-icon').click( function () {
+                    $(this).nextAll('.expandable').click();
                 });
             });
         </script>

@@ -73,23 +73,12 @@ title: "Linux Terminal"
 
         <section>
             <h4 class='expandable'><b>Questions</b></h4>
-            <div id='pwd-examples'>
-                <?prettify lang=bash?>
-                <pre class='prettyprint'>$ pwd
-/home/rafi</pre>
+            <div id='pwd-questions'>
+                <ol>
+                    <li>Open a terminal and find out which directory you're in by default</li>
+                </ol>
             </div>
         </section>
-    </div>
-</section>
-
-<section>
-    <h3><code>cd</code></h3>
-    <div id='cd'>
-        <code>cd</code> stands for <code>change directory</code>. This command is
-        used, as its name might suggest, to move between directories. For
-        example, if you are in your home directory (<code>/home/username</code>)
-        and you want to change to the root directory (<code>/</code>), you would
-        enter the command <code>cd /</code> into the terminal.
     </div>
 </section>
 
@@ -123,6 +112,38 @@ bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64 
 
         You can find more flags by reading the manual page for <code>ls</code>
         (type <code>man ls</code>) into the terminal.
+    </div>
+</section>
+
+<section>
+    <h3><code>cd</code></h3>
+    <div id='cd'>
+        <code>cd</code> stands for <code>change directory</code>. This command is
+        used, as its name might suggest, to move between directories. For
+        example, if you are in your home directory (<code>/home/username</code>)
+        and you want to change to the root directory (<code>/</code>), you would
+        enter the command <code>cd /</code> into the terminal.
+
+        <section>
+            <h4 class='expandable'><b>Examples</b></h4>
+            <div id='cd-examples'>
+                <?prettify lang=bash?>
+                <pre class='prettyprint'>$ pwd
+/home/rafi
+$ cd Videos
+$ pwd
+/home/rafi/Videos</pre>
+            </div>
+        </section>
+
+        <section>
+            <h4 class='expandable'><b>Questions</b></h4>
+            <div id='cd-questions'>
+                <ol>
+                    <li></li>
+                </ol>
+            </div>
+        </section>
     </div>
 </section>
 

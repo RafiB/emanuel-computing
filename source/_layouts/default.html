@@ -58,12 +58,15 @@
                 });
 
                 $('.expandable').next('div').hide();
-                $('.expandable').before('<span class="glyphicon glyphicon-chevron-up expandable-icon"></span>');
+                $('.expandable').before('<span class="glyphicon glyphicon-chevron-down expandable-icon"></span>');
                 $('.expandable').click( function () {
                     if ($(this).get(0).tagName == 'H3' || $(this).get(0).tagName == 'H4') {
                         $(this).prevAll('span').toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
-                        $(this).nextAll('div').toggle();
+                        $(this).nextAll('div').toggle(200);
                     }
+                });
+                $('.expandable-icon').click( function () {
+                    $(this).nextAll('.expandable').click();
                 });
             });
         </script>

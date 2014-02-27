@@ -1,0 +1,41 @@
+            <section>
+                <h4 class='expandable'><b>Questions</b></h4>
+                <div id='while-questions'>
+                    What do these programs do?
+                    <div class='prettyheader'>Question 1</div>
+                    <?prettify lang=c?>
+                    <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+    int main (int argc, char* argv[]) {
+
+    int i = 0;
+
+    while (i &lt;= 9) {
+        printf("%d", i);
+        i++;
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+
+                    <div class='prettyheader'>Question 2</div>
+                    <?prettify lang=c?>
+                    <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int i = 1;
+
+    while (i &lt; 10) {
+        printf("%d", i);
+        i = i + 2;
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+                </div>
+            </section>

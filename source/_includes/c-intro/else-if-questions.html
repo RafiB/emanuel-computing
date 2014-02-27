@@ -1,0 +1,28 @@
+                <section>
+                    <h4 class=expandable><b>Questions</b></h4>
+                    <div id='else-if-questions'>
+                        
+                        What does this program do?
+                        <div class='prettyheader'>Question 1</div>
+                        <?prettify lang=c?>
+                        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int a = 4;
+    int b = 2;
+
+    if (a &lt; b) {
+        printf("%d is less than %d.", a, b);
+    } else if (b &lt; a) {
+        printf("%d is less than %d.", b, a);
+    } else {
+        printf("%d and %d are equal.", a, b);
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+                    </div>
+                </section>

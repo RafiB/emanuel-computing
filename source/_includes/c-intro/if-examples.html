@@ -1,0 +1,55 @@
+                <section>
+                    <h4 class='expandable'><b>Examples</b></h4>
+                    <div id='if-examples'>
+
+                        <div class='prettyheader'>Example 1</div>
+                        <?prettify lang=c?>
+                        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    char myLetter = 'H';
+
+    if (myLetter == 'H') {
+        printf("My name starts with H!");
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+                        This program will print <code>My name starts with H!</code>. Here, the condition
+                        is that the variable <code>myLetter</code> is the same as 'H'. The condition is true,
+                        so the code inside the braces will run.
+
+                        <div class='prettyheader'>Example 2</div>
+                        <?prettify lang=c?>
+                        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    char myLetter = 'H';
+    char yourLetter = 'R';
+
+    if (myLetter == yourLetter) {
+        printf("Our names start with the same letter!");
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+
+                        This program will not print anything. The condition being checked here is that the
+                        variable <code>myLetter</code> has the same value as the variable <code>yourLetter</code>.
+                        Given this is not true, the code inside the braces will not run.<br /><br />
+
+                        <div class='alert alert-success'>
+                            <b>Note</b>: The condition here looks a little different to those which we are used
+                            to. As well as comparing the value of a variable to the value of a number as we have
+                            seen in previous examples, we are also able to compare the value of a variable with
+                            the value of another variable. Here we are comparing <code>myLetter</code> and
+                            <code>yourLetter</code>. This is also completely valid.
+                        </div>
+                    </div>
+                </section>

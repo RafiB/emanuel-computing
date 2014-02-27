@@ -158,6 +158,12 @@ h3.para-heading {
     white-space: nowrap;
 }
 
+.alert-info {
+    background-color: #fff0da;
+    border-color: #f1dee8;
+    color: #885039;
+}
+
 .table-bordered>thead>tr>th,
 .table-bordered>tbody>tr>th,
 .table-bordered>tfoot>tr>th,

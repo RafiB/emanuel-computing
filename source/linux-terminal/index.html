@@ -62,23 +62,8 @@ title: "Linux Terminal"
         This is a very handy tool to have when you're using files that are spread
         across different folders on your computer.
 
-        <section>
-            <h4 class='expandable'><b>Examples</b></h4>
-            <div id='pwd-examples'>
-                <?prettify lang=bash?>
-                <pre class='prettyprint'>$ pwd
-/home/rafi</pre>
-            </div>
-        </section>
-
-        <section>
-            <h4 class='expandable'><b>Questions</b></h4>
-            <div id='pwd-questions'>
-                <ol>
-                    <li>Open a terminal and find out which directory you're in by default</li>
-                </ol>
-            </div>
-        </section>
+        {% include linux-terminal/pwd-examples.html %}
+        {% include linux-terminal/pwd-questions.html %}
     </div>
 </section>
 
@@ -111,7 +96,17 @@ bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64 
         you use <code>$ ls -la</code> or <code>$ ls -al</code>.<br /><br />
 
         You can find more flags by reading the manual page for <code>ls</code>
-        (type <code>man ls</code>) into the terminal.
+        (type <code>man ls</code>) into the terminal.<br /><br />
+
+        <div class="alert alert-info">
+            <b>Tip</b>: <code>~</code> is an <span class='keyword'>alias</span> for your home directory
+        </div>
+        <div class="alert alert-info">
+            <b>Tip</b>: <code>cd</code> with no options will change to your home directory. <code>cd</code> is the same as <code>cd ~</code>.
+        </div>
+
+        {% include linux-terminal/ls-examples.html %}
+        {% include linux-terminal/ls-questions.html %}
     </div>
 </section>
 
@@ -124,26 +119,8 @@ bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64 
         and you want to change to the root directory (<code>/</code>), you would
         enter the command <code>cd /</code> into the terminal.
 
-        <section>
-            <h4 class='expandable'><b>Examples</b></h4>
-            <div id='cd-examples'>
-                <?prettify lang=bash?>
-                <pre class='prettyprint'>$ pwd
-/home/rafi
-$ cd Videos
-$ pwd
-/home/rafi/Videos</pre>
-            </div>
-        </section>
-
-        <section>
-            <h4 class='expandable'><b>Questions</b></h4>
-            <div id='cd-questions'>
-                <ol>
-                    <li></li>
-                </ol>
-            </div>
-        </section>
+        {% include linux-terminal/cd-examples.html %}
+        {% include linux-terminal/cd-questions.html %}
     </div>
 </section>
 

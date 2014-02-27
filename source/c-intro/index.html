@@ -252,13 +252,14 @@ int main (int argc, char* argv[]) {
         to repeat, skip, or execute steps when certain conditions are met.
 
         <section>
-            <h4><code>if</code></h4>
-            <div id='if-else'>
+            <h4 class='expandable'><code>if</code></h4>
+            <div id='if'>
                 <div id='if-joke' class='joke pull-right'>
                     A programmer's wife asks him to go out and get a loaf of bread.
                     "Oh, and if they have eggs," she says, "get a dozen!". He returns
                     with twelve loaves of bread.
                 </div>
+
                 <code>if</code> allows us to execute code <em>if</em> certain conditions
                 are met. The <span class='keyword'>if statement</span> comprises of the word
                 if, followed by conditions in <span class='keyword'>parentheses</span>. The
@@ -271,111 +272,63 @@ int main (int argc, char* argv[]) {
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
-    int main (int argc, char* argv[]) {
+int main (int argc, char* argv[]) {
 
-        int myNumber = 5;
+    int myNumber = 5;
 
-        if (myNumber == 5) {
-            printf("My favourite number is five!");
-        }
+    if (myNumber == 5) {
+        printf("My favourite number is five!");
+    }
 
-        return EXIT_SUCCESS;
-    }</pre>
+    return EXIT_SUCCESS;
+}</pre>
 
-                <section>
-                    <h4 class='expandable'><b>Examples</b></h4>
-                    <div id='if-examples'>
-                        
-                        <div class='prettyheader'>Example 1</div>
-                        <?prettify lang=c?>
-                        <pre class='prettyprint linenums'>
+                {% include c-intro/if-examples.html %}
+                {% include c-intro/if-questions.html %}
+            </div> <!-- div#if -->
+        </section>
+
+        <section>
+            <h4 class='expandable'><code>else</code></h4>
+            <div id='else'>
+                The complement to <code>if</code> is <code>else</code>. This creates a
+                simple either-or situation: if certain conditions are met, do this, otherwise
+                do that.
+
+                <?prettify lang=c?>
+                <pre class='prettyprint linenums'>
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
-        int main (int argc, char* argv[]) {
+int main (int argc, char* argv[]) {
 
-            char myLetter = 'H';
+    int myNumber = 4;
 
-            if (myLetter == 'H') {
-                printf("My name starts with H!");
-            }
+    if (myNumber == 5) {
+        printf("My favourite number is five!");
+    } else {
+        printf("%d is not my favourite number.", myNumber);
+    }
 
-            return EXIT_SUCCESS;
-        }</pre>
-                        This program will print <code>My name starts with H!</code>. Here, the condition
-                        is that the variable <code>myLetter</code> is the same as 'H'. The condition is true,
-                        so the code inside the braces will run.
+    return EXIT_SUCCESS;
+}</pre>
 
-                        <div class='prettyheader'>Example 2</div>
-                        <?prettify lang=c?>
-                        <pre class='prettyprint linenums'>
+                {% include c-intro/else-examples.html %}
+                {% include c-intro/else-questions.html %}
+            </div> <!-- div#else --!>
+        </section>
+
+        <section>
+            <h4 class='expandable'><code>else if</code></h4>
+            <div id='else-if'>
+                <code>else if</code> is a combination of <code>if</code> and <code>else</code>.
+                Like <code>else</code>, <code>else if</code> allows code to be executed if the
+                initial if statement was not run. Unlike <code>else</code>, <code>else if</code>
+                allows us to specify a different condition.
+
+                <?prettify lang=c?>
+                <pre class='prettyprint linenums'>
 #include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-        int main (int argc, char* argv[]) {
-
-            char myLetter = 'H';
-            char yourLetter = 'R';
-
-            if (myLetter == yourLetter) {
-                printf("Our names start with the same letter!");
-            }
-
-            return EXIT_SUCCESS;
-        }</pre>
-
-                        This program will not print anything. The condition being checked here is that the
-                        variable <code>myLetter</code> has the same value as the variable <code>yourLetter</code>.
-                        Given this is not true, the code inside the braces will not run.<br /><br />
-
-                        <div class='alert alert-success'>
-                            <b>Note</b>: The condition here looks a little different to those which we are used
-                            to. As well as comparing the value of a variable to the value of a number as we have
-                            seen in previous examples, we are also able to compare the value of a variable with
-                            the value of another variable. Here we are comparing </code>myLetter</code> and
-                            <code>yourLetter</code>. This is also completely valid.
-                        </div>
-                    </div>
-                </section>
-            </section>
-
-            <section>
-                <h4><code>else</code></h4>
-                <div id='else'>
-                    The complement to <code>if</code> is <code>else</code>. This creates a
-                    simple either-or situation: if certain conditions are met, do this, otherwise
-                    do that.
-
-                    <?prettify lang=c?>
-                    <pre class='prettyprint linenums'>
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-        int main (int argc, char* argv[]) {
-
-            int myNumber = 4;
-
-            if (myNumber == 5) {
-                printf("My favourite number is five!");
-            } else {
-                printf("%d is not my favourite number.", myNumber);
-            }
-
-            return EXIT_SUCCESS;
-        }</pre>
-                </div>
-            </section>
-
-            <section>
-                <h4><code>else if</code></h4>
-                <div id='else-if'>
-                    <code>else if</code> is a combination of <code>if</code> and <code>else</code>.
-                    Like <code>else</code>, <code>else if</code> allows code to be executed if the
-                    initial if statement was not run. Unlike <code>else</code>, <code>else if</code>
-                    allows us to specify a different condition.
-
-                    <?prettify lang=c?>
-                    <pre class='prettyprint linenums'>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 int main (int argc, char* argv[]) {
@@ -392,32 +345,34 @@ int main (int argc, char* argv[]) {
 
     return EXIT_SUCCESS;
 }</pre>
-                <div class='alert alert-success'>
-                    <b>Note</b>: In this example, we could have replaced the else statement
-                    with<br /><br />
+           <div class='alert alert-success'>
+                <b>Note</b>: In this example, we could have replaced the else statement
+                with<br /><br />
 
-                    <code>else if (myNumber &gt; 5)</code><br /><br />
+                <code>else if (myNumber &gt; 5)</code><br /><br />
 
-                    though this is not strictly necessary.
-                </div>
+                though this is not strictly necessary.
             </div>
-        </section>
 
-        <section>
-            <h4><code>while</code></h4>
-            <div id='while'>
-                <div id='while-joke' class='joke pull-right'>
-                    A programmer's husband asked her to go and get a loaf of bread.
-                    "Oh, and while you're out there," he said, "get some eggs too!"
-                    She never came home.
-                </div>
-                <code>while</code> allows us to execute code <em>while</em> certain conditions are
-                met. This creates a loop. The condition in the while loop is checked, and the loop runs.
-                Before the loop runs again, the condition is checked again. If the condition is no longer
-                met, then the loop will not run. An example of a while loop is:
+            {% include c-intro/else-if-questions.html %}
+        </div> <!-- div#else-if --!>
+    </section>
 
-                <?prettify lang=c?>
-                <pre class='prettyprint linenums'>
+    <section>
+        <h4 class='expandable'><code>while</code></h4>
+        <div id='while'>
+            <div id='while-joke' class='joke pull-right'>
+                A programmer's husband asked her to go and get a loaf of bread.
+                "Oh, and while you're out there," he said, "get some eggs too!"
+                She never came home.
+            </div>
+            <code>while</code> allows us to execute code <em>while</em> certain conditions are
+            met. This creates a loop. The condition in the while loop is checked, and the loop runs.
+            Before the loop runs again, the condition is checked again. If the condition is no longer
+            met, then the loop will not run. An example of a while loop is:
+
+            <?prettify lang=c?>
+            <pre class='prettyprint linenums'>
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
@@ -428,91 +383,19 @@ int main (int argc, char* argv[]) {
         printf("Hello!");
         i++;
     }
-    
-    return EXIT_SUCCESS;
-}</pre>
-
-                This is more concise than ten lines of print statements. We use loops to help us
-                minimise repeated code - the good programmer is the lazy programmer!
-                
-                <section>
-                    <h4 class='expandable'><b>Examples</b></h4>
-                    <div id='while-examples'>
-                        <div class='prettyheader'>Example 1</div>
-                        <?prettify lang=c?>
-                        <pre class='prettyprint linenums'>
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-    int main (int argc, char* argv[]) {
-
-        int i = 1;
-
-        while (i &lt;= 10) {
-            printf("%d\n", i);
-            i++;
-        }
-
-        return EXIT_SUCCESS;
-    }</pre>
-                        This program will print out the numbers from 1 to 10, inclusive, with each
-                        number on a new line.
-
-                        <div class='alert alert-success'>
-                            <b>Note</b>: The <code>\n</code> in the string puts a new line in after
-                            each number printed. The <code>\</code> is the
-                            <span class='keyword'>escape character</span> which tells the compiler
-                            that the character(s) following the <code>\</code> has a special property.
-                            The <code>n</code> is the newline character.
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <h4 class='expandable'><b>Questions</b></h4>
-                    <div id='while-questions'>
-                        What will these programs do?
-                        <div class='prettyheader'>Question 1</div>
-                        <?prettify lang=c?>
-                        <pre class='prettyprint linenums'>
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-int main (int argc, char* argv[]) {
-
-    int i = 0;
-
-    while (i &lt;= 9) {
-        printf("%d", i);
-        i++;
-    }
 
     return EXIT_SUCCESS;
 }</pre>
 
-                        <div class='prettyheader'>Question 2</div>
-                        <?prettify lang=c?>
-                        <pre class='prettyprint linenums'>
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+            This is more concise than ten lines of print statements. We use loops to help us
+            minimise repeated code - the good programmer is the lazy programmer!
 
-int main (int argc, char* argv[]) {
+            {% include c-intro/while-examples.html %}
+            {% include c-intro/while-questions.html %}
+        </section> <!-- div#while --!>
 
-    int i = 1;
-
-    while (i &lt; 10) {
-        printf("%d", i);
-        i = i + 2;
-    }
-
-    return EXIT_SUCCESS;
-}</pre>
-                    </div>
-                </section>
-            </section>
-
-            <section>
-                <h4><code>for</code></h4>
-            </section>
-    </div>
+        <section>
+            <h4 class='expandable'><code>for</code></h4>
+        </section>
+    </div> <!-- div#for --!>
 </section>

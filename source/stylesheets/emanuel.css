@@ -96,7 +96,8 @@ a:hover {
 }
 
 h3.expandable,
-h4.expandable {
+h4.expandable,
+h5.expandable {
     display: inline-block;
 }
 

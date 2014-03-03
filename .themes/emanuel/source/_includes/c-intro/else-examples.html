@@ -1,0 +1,50 @@
+                <section>
+                    <h4 class=expandable><b>Examples</b></h4>
+                    <div id='else-examples'>
+                        
+                        <div class='prettyheader'>Example 1</div>
+                        <?prettify lang=c?>
+                        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int a = 2;
+    int b = 4;
+
+    if (b/a == a) {
+        printf("That is correct!");
+    } else {
+        printf("That is incorrect!");
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+
+                        This program will print <code>That is correct!</code>
+                        as the condition is true.
+
+                        <div class='prettyheader'>Example 2</div>
+                        <?prettify lang=c?>
+                        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int a = 4;
+    int b = 2;
+
+    if (b/a == a) {
+        printf("That is correct!");
+    } else {
+        printf("That is incorrect!");
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+                        This program will print <code>That is incorrect!</code>
+                        as the condition is not true.
+                    </div>
+                </section>

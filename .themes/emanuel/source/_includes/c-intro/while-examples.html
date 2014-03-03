@@ -1,0 +1,32 @@
+            <section>
+                <h4 class='expandable'><b>Examples</b></h4>
+                <div id='while-examples'>
+                    <div class='prettyheader'>Example 1</div>
+                    <?prettify lang=c?>
+                    <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main (int argc, char* argv[]) {
+
+    int i = 1;
+
+    while (i &lt;= 10) {
+        printf("%d\n", i);
+        i++;
+    }
+
+    return EXIT_SUCCESS;
+}</pre>
+                    This program will print out the numbers from 1 to 10, inclusive, with each
+                    number on a new line.
+
+                    <div class='alert alert-success'>
+                        <b>Note</b>: The <code>\n</code> in the string puts a new line in after
+                        each number printed. The <code>\</code> is the
+                        <span class='keyword'>escape character</span> which tells the compiler
+                        that the character(s) following the <code>\</code> has a special property.
+                        The <code>n</code> is the newline character.
+                    </div>
+                </div>
+            </section>

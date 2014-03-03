@@ -4,9 +4,9 @@ title: "Linux Terminal"
 ---
 
 <div id='breadcrumb'>
-    <ol class="breadcrumb">
+    <ol class='breadcrumb'>
         <li><a href='{{ root_url }}/'>Home</a></li>
-        <li class="active">Linux Terminal</li>
+        <li class='active'>Linux Terminal</li>
     </ol>
 </div>
 
@@ -44,12 +44,31 @@ title: "Linux Terminal"
         <span class='keyword'>console</span>.<br /><br />
 
         <div class='alert alert-success'>
-            Note: in examples concerning the terminal, <code>$</code>
+            <b>Note</b>: in examples concerning the terminal, <code>$</code>
             represents the <span class='keyword'>prompt</span>, which is the
             part of the terminal that waits for the next instruction.
         </div>
 
-        <h1>can someone please talk about single vs double quotes. Rafi doesn't want to type things</h1>
+        There is also an important distinction to make between quote marks.
+        This won't be relevant for some time, but hopefully you'll remember
+        it by the time we get to the third module, when it becomes incredibly
+        useful.<br />
+        In the terminal, a quote mark (<code>"</code>) is used to represent a
+        string. However, characters in the string are interpreted by the
+        terminal, which means that special characters (such as <code>*</code> and
+        <code>/</code>) can disappear from instructions:
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ echo "Where did the \\backslash go?"
+Where did the \backslash go?</pre>
+
+        This strange behaviour will be explained later. However, when we use
+        <span class='keyword'>inverted commas</span> or "single-quotes"
+        (<code>'</code>), we're telling the terminal that the contained string
+        is a <span class='keyword'>raw string</span>, which means that the
+        terminal does not try to interpret any characters:
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ echo 'We keep our \\backslashes!'
+We keep our \\backslashes!</pre>
     </div>
 </section>
 
@@ -62,23 +81,8 @@ title: "Linux Terminal"
         This is a very handy tool to have when you're using files that are spread
         across different folders on your computer.
 
-        <section>
-            <h4 class='expandable'><b>Examples</b></h4>
-            <div id='pwd-examples'>
-                <?prettify lang=bash?>
-                <pre class='prettyprint'>$ pwd
-/home/rafi</pre>
-            </div>
-        </section>
-
-        <section>
-            <h4 class='expandable'><b>Questions</b></h4>
-            <div id='pwd-questions'>
-                <ol>
-                    <li>Open a terminal and find out which directory you're in by default</li>
-                </ol>
-            </div>
-        </section>
+        {% include linux-terminal/pwd-examples.html %}
+        {% include linux-terminal/pwd-questions.html %}
     </div>
 </section>
 
@@ -111,7 +115,17 @@ bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64 
         you use <code>$ ls -la</code> or <code>$ ls -al</code>.<br /><br />
 
         You can find more flags by reading the manual page for <code>ls</code>
-        (type <code>man ls</code>) into the terminal.
+        (type <code>man ls</code>) into the terminal.<br /><br />
+
+        <div class='alert alert-info'>
+            <b>Tip</b>: <code>~</code> is an <span class='keyword'>alias</span> for your home directory
+        </div>
+        <div class='alert alert-info'>
+            <b>Tip</b>: <code>cd</code> with no options will change to your home directory. <code>cd</code> is the same as <code>cd ~</code>.
+        </div>
+
+        {% include linux-terminal/ls-examples.html %}
+        {% include linux-terminal/ls-questions.html %}
     </div>
 </section>
 
@@ -124,26 +138,8 @@ bin  boot  cdrom  dev  etc  home  initrd.img  initrd.img.old  lib  lib32  lib64 
         and you want to change to the root directory (<code>/</code>), you would
         enter the command <code>cd /</code> into the terminal.
 
-        <section>
-            <h4 class='expandable'><b>Examples</b></h4>
-            <div id='cd-examples'>
-                <?prettify lang=bash?>
-                <pre class='prettyprint'>$ pwd
-/home/rafi
-$ cd Videos
-$ pwd
-/home/rafi/Videos</pre>
-            </div>
-        </section>
-
-        <section>
-            <h4 class='expandable'><b>Questions</b></h4>
-            <div id='cd-questions'>
-                <ol>
-                    <li></li>
-                </ol>
-            </div>
-        </section>
+        {% include linux-terminal/cd-examples.html %}
+        {% include linux-terminal/cd-questions.html %}
     </div>
 </section>
 
@@ -183,10 +179,47 @@ $ pwd
 
         However, if there already exists a file or folder named "new-file", it
         will be replaced by the new file, and you will lose the old file or folder.
-        Always be careful with your <code>mv</code> instructions.<br /><br />
+        Always be careful with your <code>mv</code> instructions. It is also recommend
+        that you use the <code>-n</code> or <code>--no-clobber</code> option, which
+        will stop <code>mv</code> from overwriting existing files like so:
+
+        <div class='prettyheader'>Without -n</div>
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ ls
+courses  courses.sh  Desktop  Documents  Downloads  git_stuff  Music  Pictures  Public  Templates  Videos
+$ echo "Hello" &gt; a
+$ echo "World" &gt; b
+$ ls
+a  b  courses  courses.sh  Desktop  Documents  Downloads  git_stuff  Music  Pictures  Public  Templates  Videos
+$ cat a
+Hello
+$ cat b
+World
+$ mv a b
+$ ls
+b  courses  courses.sh  Desktop  Documents  Downloads  git_stuff  Music  Pictures  Public  Templates  Videos
+$ cat a
+cat: a: No such file or directory
+$ cat b
+Hello</pre>
+        <div class='prettyheader'>With -n<br /><small>(continuing from above example)</small></div>
+        <?prettify lang=bash?>
+        <pre class='prettyprint'>$ echo "World" &gt; b
+$ cat b
+World
+$ echo "Hello" &gt; a
+$ mv --no-clobber a b
+$ cat a
+Hello
+$ cat b
+World</pre><br /><br />
 
         Think of <code>mv</code> as a "cut and paste" command, where <code>cp</code>
-        is "copy and paste".
+        is "copy and paste".<br /><br />
+
+        Also, note that <code>mv</code> essentially renames a file or directory. As
+        such, we can move folders with <code>$ mv old-folder new-folder</code>,
+        which is different to <code>cp</code> where we have to copy recursively.
 </section>
 
 <section>
@@ -209,7 +242,7 @@ $ rm myFile1 myFile2 myFile3</pre>
         the <code>-f</code> flag.<br /><br />
 
         <div class='alert alert-danger'>
-            Warning: the following command deletes as many files on your
+            <b>Warning</b>: the following command deletes as many files on your
             computer as possible. If you run it on your computer or someone
             else's computer, you will be kicked out of this course. No second
             chances.
@@ -313,19 +346,19 @@ $</pre>
             </tr>
             <tr>
                 <td>user</td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
             </tr>
             <tr>
                 <td>group</td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
                 <td></td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
             </tr>
             <tr>
                 <td>others</td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -349,15 +382,15 @@ $</pre>
             </tr>
             <tr>
                 <td>user</td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
             </tr>
             <tr>
                 <td>group</td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
-                <td><span class="glyphicon glyphicon-ok"></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
+                <td><span class='glyphicon glyphicon-ok'></span></td>
             </tr>
             <tr>
                 <td>others</td>

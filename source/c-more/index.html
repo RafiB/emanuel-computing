@@ -171,6 +171,52 @@ int main(){printf("hello world\n");return 0;}</pre>
 <section>
     <h3 class='expandable'>User input</h3>
     <div id='user-input'>
+        Often, we want our program to interact with the user in some way. We
+        can already talk to the user, by printing out to the screen. Now we
+        need a way for the user to talk to the code. We tend to use
+        <code>scanf</code> to read input - similar to printf, we prepare
+        a string to read from the user, and provide a place to save the
+        information.<br /><br />
+
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char* argv[]) {
+    int favNum;
+    printf("Enter your favourite number: ");
+    scanf("%d", &amp;favNum);
+    printf("Your favourite number is %d\n", favNum);
+
+    return EXIT_SUCCESS;
+}</pre><br />
+
+        Let's break this down.<br />
+        <ol>
+            <li>We declare an int called favNum, but don't bother giving it a
+                value.</li>
+            <li>We prompt the user for their input. We don't print a newline -
+                scanf will only work after the user presses enter, so the
+                interaction looks like this: <pre>Enter your favourite number: 5
+Your favourite number is 5</pre></li>
+            <li>We scan in the user's input. We give a prepared string,
+                <code>"%d"</code>, to tell scanf to wait for a number followed
+                by a newline. We also point to the favNum variable with
+                <code>&amp;</code> (more on this in the Further C module).</li>
+            <li>Finally we print our response, passing in favNum.</li>
+        </ol>
+
+
+        {% include c-more/user-input-examples.html %}
+        {% include c-more/user-input-questions.html %}
+    </div>
+</section>
+
+<section>
+    <h3 class='expandable'>File I/O</h3>
+    <div id='file-io'>
+
     </div>
 </section>
 

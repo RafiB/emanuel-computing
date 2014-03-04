@@ -138,6 +138,10 @@ h3.para-heading {
     border-bottom: 1px dashed #555;
 }
 
+pre {
+    margin-top: 20px;
+}
+
 .prettyheader {
     font-size: 18px;
     font-weight: 700;

@@ -52,18 +52,19 @@
                 $('.expandable').next('div').hide();
                 $('.expandable').before('<span class="glyphicon glyphicon-chevron-down expandable-icon"></span>');
                 $('.expandable').click( function () {
-                    if ($(this).get(0).tagName == 'H3' || $(this).get(0).tagName == 'H4' || $(this).get(0).tagName == 'H5') {
-                        $(this).prevAll('span').toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
-                        $(this).nextAll('div').toggle(200);
-                        togglingDiv = $(this).nextAll('div');
+                    clickedElement = $(this);
+                    elementTag = clickedElement.get(0).tagName
+                    if (elementTag == 'H3' || elementTag == 'H4' || elementTag == 'H5') {
+                        clickedElement.prevAll('span').toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
+                        togglingDiv = clickedElement.nextAll('div');
 
-                        setTimeout( function () {
+                        togglingDiv.toggle(200, function () {
                             if (togglingDiv.is(":visible")) {
                                 $.cookie('#'+togglingDiv.attr('id'), 'show');
                             } else {
                                 $.removeCookie('#'+togglingDiv.attr('id'));
                             }
-                        }, 200);
+                        });
                     }
                 });
                 $('.expandable-icon').click( function () {

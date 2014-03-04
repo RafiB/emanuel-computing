@@ -1,0 +1,26 @@
+                <section>
+                    <h4 class='expandable'><b>Examples</b></h4>
+                    <div id='arrays-examples'>
+                        <ol>
+                            <li>What if, as part of a complex program, we want some code that generates
+                                and stores all of the square numbers less than 100? First, we need to
+                                know how many of those numbers there are. 1<sup>2</sup>, 2<sup>2</sup>,
+                                ..., 9<sup>2</sup> gives us 9 square numbers that are less than
+                                10<sup>2</sup> (100). We can store these numbers in an array of ints:
+                                <?prettify lang=c?>
+                                <pre class='prettyprint'>
+int squares[NUM_SQUARES_UNDER_100];
+
+int num = 1;
+int i = 0;
+
+while (i &lt;= NUM_SQUARES_UNDER_100) {
+    squares[i] = num * num;
+    num++;
+    i++;
+}
+</pre>
+                            </li>
+                        </ol>
+                    </div>
+                </section>

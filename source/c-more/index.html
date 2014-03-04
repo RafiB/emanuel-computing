@@ -21,7 +21,10 @@ title: "More C"
 
         Now things start getting really interesting. Hopefully we now have a
         solid foundation in C and the tools to code effectively. Now it's time
-        to start writing some useful programs of our own.
+        to start writing some useful programs of our own.<br /><br />
+
+        We're not going to spoon-feed you any more: if you come across a term
+        that you've never heard of before, Google it before you ask for help.
     </div>
 </section>
 
@@ -171,7 +174,48 @@ int main(){printf("hello world\n");return 0;}</pre>
 <section>
     <h3 class='expandable'>Arrays</h3>
     <div id='arrays'>
+        When programming, we often have to deal with collections of
+        information - very few interesting things can be done with just one or
+        two variables, and having hundreds of lines of variable declarations
+        makes code difficult to follow. C has a data type called an
+        <span class='keyword'>array</span>, which is like a list of similar
+        types of variables. An array is a collection of elements of the same
+        type, for example, an array of ints. However, you can also have arrays
+        of arrays (called a two-dimensional array), arrays of characters, ...
+        <br /><br />
 
+        Arrays can be initialised with very simple syntax:
+        <code>int integerArrayName[10];</code> will create an array with enough
+        space to store 10 integers.<br /><br />
+
+        In C, strings are actually just arrays of characters with a "null
+        terminator" (<code>\0</code>) at the end, to mark "this is the end of
+        the string".<br /><br />
+
+        There are some limitations on arrays. For example, we can't create an
+        array with a size stored in a variable: the size has to be a constant,
+        either a number of a #define-d variable.
+
+        <?prettify lang=c?>
+        <pre class='prettyprint'>
+#define ARRAY_SIZE 10
+
+int arraySize = 10;
+char charArray[arraySize]; // not allowed
+char charArray[ARRAY_SIZE]; // allowed
+char charArray[10]; // allowed
+</pre>
+        <div class='alert alert-success'>
+            <b>Note</b>: we prefer to hash-define numbers that have a special
+            meaning, so that our code is clear. Numbers like the 10 in the last
+            line above are called <span class='keyword'>magic numbers</span>,
+            as they make the program work with no apparent reason for working.
+            From now on, make sure to #define any magic numbers with an
+            informative name.
+        </div>
+
+        {% include c-more/arrays-examples.html %}
+        {% include c-more/arrays-questions.html %}
     </div>
 </section>
 
@@ -213,7 +257,6 @@ Your favourite number is 5</pre></li>
                 <code>&amp;</code> (more on this in the Further C module).</li>
             <li>Finally we print our response, passing in favNum.</li>
         </ol>
-
 
         {% include c-more/user-input-examples.html %}
         {% include c-more/user-input-questions.html %}

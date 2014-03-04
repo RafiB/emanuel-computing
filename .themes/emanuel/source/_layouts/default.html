@@ -22,6 +22,7 @@
 
         <script src='{{ root_url }}/javascripts/modernizr-2.0.js'></script>
         <script src='{{ root_url }}/javascripts/jquery-2.1.0.min.js'></script>
+        <script src='{{ root_url }}/javascripts/jquery.cookie.js'></script>
 
         <script>
             /* Reveal top when you scroll 500px down the page */
@@ -51,13 +52,29 @@
                 $('.expandable').next('div').hide();
                 $('.expandable').before('<span class="glyphicon glyphicon-chevron-down expandable-icon"></span>');
                 $('.expandable').click( function () {
-                    if ($(this).get(0).tagName == 'H3' || $(this).get(0).tagName == 'H4') {
-                        $(this).prevAll('span').toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
-                        $(this).nextAll('div').toggle(200);
+                    clickedElement = $(this);
+                    elementTag = clickedElement.get(0).tagName
+                    if (elementTag == 'H3' || elementTag == 'H4' || elementTag == 'H5') {
+                        clickedElement.prevAll('span').toggleClass('glyphicon-chevron-up glyphicon-chevron-down');
+                        togglingDiv = clickedElement.nextAll('div');
+
+                        togglingDiv.toggle(200, function () {
+                            if (togglingDiv.is(":visible")) {
+                                $.cookie('#'+togglingDiv.attr('id'), 'show');
+                            } else {
+                                $.removeCookie('#'+togglingDiv.attr('id'));
+                            }
+                        });
                     }
                 });
                 $('.expandable-icon').click( function () {
                     $(this).nextAll('.expandable').click();
+                });
+
+                $.each($.cookie(), function(k, v) {
+                    if (v == 'show' && k.charAt(0) == '#') {
+                        $(k).prevAll('.expandable').click();
+                    }
                 });
             });
         </script>

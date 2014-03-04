@@ -96,7 +96,8 @@ a:hover {
 }
 
 h3.expandable,
-h4.expandable {
+h4.expandable,
+h5.expandable {
     display: inline-block;
 }
 
@@ -135,6 +136,10 @@ h3.para-heading {
 #welcome,
 #modules {
     border-bottom: 1px dashed #555;
+}
+
+pre {
+    margin-top: 20px;
 }
 
 .prettyheader {

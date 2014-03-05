@@ -245,6 +245,47 @@ int main (int argc, char* argv[]) {
 </section>
 
 <section>
+    <h3 class='expandable'>Boolean Logic</h3>
+    <div id='boolean-logic'>
+        <span class='keyword'>Boolean logic</span> refers to the idea that some
+        statement is either true or false, and can't be anything else. Boolean logic
+        fundamental in computer science as it ties in with the binary numbering system,
+        where true is 1 and false is 0. We can use these statements and their true/false
+        values to make decisions in our programs.
+
+        <section>
+            <h4 class='expandable'>and</h4>
+            <div id='logical-and'>
+                Consider two statements, a and b. For this example we will say that statement
+                a is "The sky is blue" and statement b is "Clouds are white". When using
+                <span class='keyword'>logical and</span>, we look at two or more statements
+                and use their boolean values to evaluate the <em>entire</em> statement. The
+                entire statement is true if all components of the statement are true.
+
+                <h5><b>Scenario 1</b></h5>
+                <span class='important'>The sky is blue and clouds are white.</span>
+                When using boolean logic, we can see that given statement a is true <em>and</em>
+                statement b is true, the entire statement is true.<br />
+
+                <h5><b>Scenario 2</b></h5>
+                <span class='important'>The sky is blue and clouds are not white.</span>
+                Statement a is true, but statement b is not true. This means that the entire
+                statement evaluates to false.<br />
+
+                <h5><b>Scenario 3</b></h5>
+                <span class='important'>The sky is not blue and clouds are white.</span>
+                This time, statement a is not true and statement b is true. Again, the entire
+                statement is false.<br />
+
+                <h5><b>Scenario 4</b></h5>
+                <span class='important'>The sky is not blue and clouds are not white.</span>
+                As both of the components of the statements are false, the entire statement is false.<br />
+            </div>
+        </section>
+    </div>
+</section>
+
+<section>
     <h3 class='expandable'>Control Structures</h3>
     <div id='control-structures'>
         C runs code line by line from the top of the file. Think about it as a human

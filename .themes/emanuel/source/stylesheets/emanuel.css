@@ -178,6 +178,12 @@ pre {
     border-color: #99f;
 }
 
+span.important {
+    border-radius: 20px;
+    border: 1px dashed #aaf;
+    padding: 5px;
+    margin: 10px;
+}
 .joke {
     border-radius: 20px;
     border: 1px dashed #aaf;

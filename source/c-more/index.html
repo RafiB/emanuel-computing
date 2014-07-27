@@ -266,12 +266,232 @@ Your favourite number is 5</pre></li>
 <section>
     <h3 class='expandable'>File I/O</h3>
     <div id='file-io'>
+        As well as user input, where we take information from the user via the
+        command line, we often like to read and edit files.<br /><br />
 
+        File input in C uses <code>fscanf</code> and <code>fprintf</code>. The
+        f at the beginning stands for 'file'.<br /><br />
+
+        <div class='prettyheader'>Add numbers from input file and save to output file</div>
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char* argv[]) {
+    int a, b, total;
+    FILE* inputFile;
+    FILE* outputFile;
+
+    // Read the input
+    inputFile = fopen("numbers.txt", "r");
+    fscanf(inputFile, "%d %d", &amp;a, &amp;b);
+
+    // Calculate the answer
+    total = a + b;
+
+    // Write the output
+    outputFile = fopen("sum.txt", "w");
+    fprintf(outputFile, "%d\n", total);
+
+    // Clean up!
+    fclose(inputFile);
+    fclose(outputFile);
+
+    return EXIT_SUCCESS;
+}</pre><br />
+
+        Important in line 10 is the <code>"r"</code>. That means that we open
+        the file to read it, and is called the editing "mode". Other modes are
+        as follows:
+
+        <table class='table table-bordered table-striped'>
+            <tr>
+                <td>r</td>
+                <td>open for reading</td>
+            </tr>
+            <tr>
+                <td>w</td>
+                <td>open for writing (file need not exist)</td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td>open for appending (file need not exist)</td>
+            </tr>
+            <tr>
+                <td>r+</td>
+                <td>open for reading and writing, starting at the beginning</td>
+            </tr>
+            <tr>
+                <td>w+</td>
+                <td>open for reading and writing (overwrite file)</td>
+            </tr>
+            <tr>
+                <td>a+</td>
+                <td>open for reading and writing (append if file exists)</td>
+            </tr>
+        </table>
+
+        {% include c-more/file-io-examples.html %}
+        {% include c-more/file-io-questions.html %}
     </div>
 </section>
 
 <section>
     <h3 class='expandable'>Functions</h3>
     <div id='functions'>
+        Well-written code is divided into self-contained sections called
+        <span class='keyword'>functions</span>. Functions serve two main
+        purposes:<br />
+
+        <ol>
+            <li>To avoid repeated code.</li>
+            <li>To break code up into manageable segments.</li>
+        </ol>
+
+        Let's think about number 1 first; avoiding repeated code. Imagine that
+        we want to calculate the
+        <a href='http://en.wikipedia.org/wiki/Factorial'>factorial</a> of two
+        numbers. To calculate the factorial of a single number is easy enough:
+
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char* argv[]) {
+    int number = 5; // the number that we want to calculate the factorial of
+
+    int factorial = 1;
+    int i;
+    for (i = 1; i &lt;= number; i++) {
+        factorial *= i;
+    }
+
+    printf("The factorial of %d is %d\n", number, factorial);
+
+    return EXIT_SUCCESS;
+}</pre><br />
+
+        Extending this program to calculate the factorial of another number
+        would then be trivial:
+
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(int argc, char* argv[]) {
+    int number = 5; // the number that we want to calculate the factorial of
+
+    int factorial = 1;
+    int i;
+    for (i = 1; i &lt;= number; i++) {
+        factorial *= i;
+    }
+
+    printf("The factorial of %d is %d\n", number, factorial);
+
+    number = 6;
+    factorial = 1;
+    for (i = 1; i &lt;= number; i++) {
+        factorial *= i;
+    }
+
+    printf("The factorial of %d is %d\n", number, factorial);
+
+    return EXIT_SUCCESS;
+}</pre><br />
+
+        However, we have repeated a lot of code in doing so, and repeated code
+        is useless. The lazy programmer is the good programmer!<br /><br />
+
+        To save on repeating code, we can use a function to do work. Functions
+        are composed of five main parts:<br />
+
+        <ol>
+            <li>The return type: the type of the variable that the function
+            returns</li>
+            <li>Function name: the name of the function</li>
+            <li>Arguments: the values provided for the function to act on</li>
+            <li>The body: the code that the function runs when it is
+            called</li>
+            <li>The return value: the variable or value returned by the
+            function</li>
+        </ol>
+
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int calculateFactorial(int number) {
+    int factorial = 1;
+    int i;
+    for (i = 1; i &lt;= number; i++) {
+        factorial *= i;
+    }
+
+    return factorial;
+}
+
+int main(int argc, char* argv[]) {
+    int number = 5; // the number that we want to calculate the factorial of
+
+    int factorial = calculateFactorial(number);
+    printf("The factorial of %d is %d\n", number, factorial);
+
+    number = 6;
+
+    printf("The factorial of %d is %d\n", number, calculateFactorial(number));
+
+    int i;
+    for (i = 1; i &lt; 10; i++) {
+        printf("%d! = %d\n", i, calculateFactorial(i));
+    }
+
+    return EXIT_SUCCESS;
+}</pre><br />
+
+        Now, to calculate the factorial of a number, we merely had to call the
+        calculateFactorial function and pass it the number in question. Note
+        how our function returns an integer to be printed. If we instead wanted
+        our function to print the message as well, and to return no value,
+        there is a special keyword to indicate "no type": <code>void</code>.
+
+        <?prettify lang=c?>
+        <pre class='prettyprint linenums'>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void calculateFactorial(int number) {
+    int factorial = 1;
+    int i;
+    for (i = 1; i &lt;= number; i++) {
+        factorial *= i;
+    }
+
+    printf("%d! = %d\n", number, factorial);
+}
+
+int main(int argc, char* argv[]) {
+    int number = 5; // the number that we want to calculate the factorial of
+
+    calculateFactorial(number);
+
+    number = 6;
+
+    calculateFactorial(number);
+
+    int i;
+    for (i = 1; i &lt; 10; i++) {
+        calculateFactorial(i);
+    }
+
+    return EXIT_SUCCESS;
+}</pre><br />
+
+        {% include c-more/functions-examples.html %}
+        {% include c-more/functions-questions.html %}
     </div>
 </section>
